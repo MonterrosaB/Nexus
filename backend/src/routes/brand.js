@@ -5,11 +5,11 @@ import brandController from "../controllers/brandController.js";
 const router = express.Router();
 
 router.route("/")
-.get()
-.post()
+.get(brandController.getBrands)
+.post(brandController.createBrand)
 
 router.route("/:id")
-.put()
-.delete()
+.put(brandController.updateBrand)
+.delete(brandController.deleteBrand)
 
 export default router;

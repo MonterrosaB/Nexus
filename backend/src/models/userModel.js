@@ -16,11 +16,11 @@ Status
 import { Schema, model } from "mongoose";
 
 const userSchema = new Schema({
-    DUI: {
-        type : String,
-        require : true,
-        unique: true,
-        match: [/^[0-9]{8}-[0-9]{1}$/]
+    dui: {
+        type : String
+       // required : true,
+       // unique: true,
+     //   match: [/^[0-9]{8}-[0-9]{1}$/ , 'Formato de DUI inválido'], 
     },
     firstName : {
         type : String,
@@ -32,43 +32,43 @@ const userSchema = new Schema({
     },
     role :  {
         type : String,
-        require : true,
+        required : true,
         enum: ['Admin', 'Vendedor']
     },
     email :  {
         type : String,
-        require : true,
-        unique : true,
+        required : true,
+     //   unique : true,
         match : [/^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,6}$/]
     },
     username :  {
         type : String,
-        require : true,
+        required : true,
         unique : true
     },
     password :  {
         type : String,
-        require : true,
+        required : true,
         minlength: 6,
         maxlength: 20
     },
     phoneNumber :  {
         type : String,
-        require : true,
+        required : true,
         match : [/^[0-9]{4}-[0-9]{4}$/]
     },
     birthDate :  {
         type : Date,
-        require : true
+        required : true
     },
     sex :  {
         type : String,
-        require : true,
+        required : true,
         enum: ['M', 'F']
     },
     status : {
         type : Boolean,
-        require : true,
+        required : true,
         default : true
     }
 },

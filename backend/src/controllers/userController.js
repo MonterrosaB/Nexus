@@ -5,15 +5,15 @@ const userController = {};
 
 //SELECT
 userController.getUser = async (req, res) => {
-    const user = await Products.find();
-    res.json(products)
+    const users = await userModel.find();
+    res.json(users)
 }   
 
 //INSERT
 userController.createUser = async (req, res) => {
-    const {dui, firstName, lastName, role, email, username, password, phoneNumber, birthDate, sex, status, isVerified} = req.body;
+    const {dui, firstName, lastName, role, email, username, password, phoneNumber, birthDate, sex, status} = req.body;
     
-    const newUser = new userModel({dui, firstName, lastName, role, email, username, password, phoneNumber, birthDate, sex, status, isVerified});
+    const newUser = new userModel({dui, firstName, lastName, role, email, username, password, phoneNumber, birthDate, sex, status});
     await newUser.save()
     res.json({message : "user saved"})
 }
@@ -26,10 +26,10 @@ userController.deleteUser = async (req, res) => {
 
 //UPDATE
 userController.updateUser = async (req, res) => {
-    const {dui, firstName, lastName, role, email, username, password, phoneNumber, birthDate, sex, status, isVerified} = req.body;
+    const {dui, firstName, lastName, role, email, username, password, phoneNumber, birthDate, sex, status} = req.body;
 
     await userModel.findByIdAndUpdate(req.params.id, {
-        dui, firstName, lastName, role, email, username, password, phoneNumber, birthDate, sex, status, isVerified
+        dui, firstName, lastName, role, email, username, password, phoneNumber, birthDate, sex, status
     },{new : true}
     );
     res.json({ message : "user updated"})

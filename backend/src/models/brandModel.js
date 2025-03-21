@@ -8,7 +8,7 @@ import { Schema, model } from "mongoose";
 const brandSchema = new Schema({
     name : {
         type : String,
-        require : true,
+        required : true,
         min : 2
     }
 },

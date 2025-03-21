@@ -1,7 +1,6 @@
 const customerController = {};
 
 import customerModel from "../models/customerModel.js";
-import userController from "./userController.js";
 
 //SELECT
 customerController.getCustomers = async (req, res) => {

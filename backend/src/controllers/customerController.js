@@ -28,7 +28,7 @@ customerController.deleteCustomer = async (req, res) => {
 }
 
 //UPDATE
-userController.updateUser = async (req, res) => {
+customerController.updateCustomer = async (req, res) => {
     const {firstName, 
         lastName, 
         email, 

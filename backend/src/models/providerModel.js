@@ -30,7 +30,7 @@ const providerSchema = new Schema({
     email :  {
         type : String,
         require : true,
-        default : unique,
+        unique : true,
         match : [/^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,6}$/]
     },
     phoneNumber : {

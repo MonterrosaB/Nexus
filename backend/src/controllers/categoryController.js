@@ -1,6 +1,6 @@
 const categoriesController = {};
 
-import categoriesModel from "../models/categoriesModel.js";
+import categoriesModel from "../models/categoryModel.js";
 
 //SELECT
 categoriesController.getCategory = async (req, res) => {

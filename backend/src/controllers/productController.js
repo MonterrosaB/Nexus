@@ -2,7 +2,7 @@ import Products from "../models/productModel.js";
 
 const productsController = {};
 
-productsController.getProducto = async (req, res) => {
+productsController.getProduct = async (req, res) => {
 
     const products = await Products
    .find()

@@ -1,27 +1,22 @@
 /*
+
 _id,
-DUI,
 FirstName,
 LastName,
-Role,
 Email,
 Username,
 Password,
 PhoneNumber,
 BirthDate,
-Gender,
-Status
+Sex,
+Status,
+isVerified
+
 */
 
 import { Schema, model } from "mongoose";
 
-const userSchema = new Schema({
-    DUI: {
-        type : String,
-        require : true,
-        unique: true,
-        match: [/^[0-9]{8}-[0-9]{1}$/]
-    },
+const customerSchema = new Schema({
     firstName : {
         type : String,
         minlength: 2
@@ -29,11 +24,6 @@ const userSchema = new Schema({
     lastName : {
         type : String,
         minlength: 2
-    },
-    role :  {
-        type : String,
-        require : true,
-        enum: ['Admin', 'Vendedor']
     },
     email :  {
         type : String,
@@ -70,6 +60,11 @@ const userSchema = new Schema({
         type : Boolean,
         require : true,
         default : true
+    },
+    isVerified : {
+        type : Boolean,
+        require : true,
+        default : false
     }
 },
 {
@@ -77,4 +72,4 @@ const userSchema = new Schema({
     strict : false
 }); 
 
-export default model ("User", userSchema)
+export default model ("Customer", customerSchema)

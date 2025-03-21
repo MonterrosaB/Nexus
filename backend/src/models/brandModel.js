@@ -5,7 +5,7 @@
 
 import { Schema, model } from "mongoose";
 
-const brandtSchema = new Schema({
+const brandSchema = new Schema({
     name : {
         type : String,
         require : true,
@@ -17,4 +17,4 @@ const brandtSchema = new Schema({
     strict : false
 }); 
 
-export default model("Brand", brandtSchema)
+export default model("Brand", brandSchema)

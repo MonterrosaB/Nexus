@@ -12,7 +12,7 @@ import { Schema, model } from "mongoose";
 const productSchema = new Schema({
     idProduct: { type: Schema.Types.ObjectId,
          required: true,
-         ref: "productModel"
+         ref: "Product"
         },
     quantity: {
          type: Number,

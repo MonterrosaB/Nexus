@@ -41,19 +41,19 @@ const productsSchema = new Schema (
 
          idCategory:{
             type: Schema.Types.ObjectId,
-            ref: "categoryModel",
+            ref: "Category",
             require: true
          },
 
          idBrand:{
             type: Schema.Types.ObjectId,
-            ref: "brandModel",
+            ref: "Brand",
             require: true
          },
 
          idProvider:{
             type: Schema.Types.ObjectId,
-            ref: "providerModel",
+            ref: "Provider",
             require: true
          },
 

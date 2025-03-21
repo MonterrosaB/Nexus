@@ -9,7 +9,6 @@ const categorySchema = new Schema({
     name : {
         type : String,
         require : true,
-        min : 2
     }
 },
 {

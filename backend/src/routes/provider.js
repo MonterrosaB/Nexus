@@ -9,7 +9,7 @@ router.route("/")
 .post(providerController.createProvider)
 
 router.route("/:id")
-.put(providerController.deleteProvider)
-.delete(providerController.updateProvider)
+.put(providerController.updateProvider)
+.delete(providerController.deleteProvider)
 
 export default router;

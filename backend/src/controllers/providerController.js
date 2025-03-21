@@ -10,9 +10,9 @@ providerController.getProvider = async (req, res) => {
 
 //INSERT
 providerController.createProvider = async (req, res) => {
-    const {name} = req.body;
+    const {firstName, lastName, company, email, phoneNumber} = req.body;
     
-    const newProvider = new providerModel({name});
+    const newProvider = new providerModel({firstName, lastName, company, email, phoneNumber});
     await newProvider.save()
     res.json({message : "provider saved"})
 }
@@ -25,10 +25,10 @@ providerController.deleteProvider = async (req, res) => {
 
 //UPDATE
 providerController.updateProvider = async (req, res) => {
-    const {name} = req.body;
+    const {firstName, lastName, company, email, phoneNumber} = req.body;
 
     await providerModel.findByIdAndUpdate(req.params.id, {
-            name,
+        firstName, lastName, company, email, phoneNumber,
         },{new : true}
     );
     res.json({ message : "provider updated"})

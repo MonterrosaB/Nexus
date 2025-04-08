@@ -108,3 +108,234 @@
     font-style: italic;
   }
   
+  
+
+
+
+  /*Aqui empieza el preloader*/
+  
+  .loading-page {
+    position: fixed; /* CAMBIO importante: antes estaba en absolute */
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right, #0c0000, #01080a, #000000);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    color: #191654;
+    z-index: 9999; /* Asegura que esté sobre todo */
+  }
+  
+  
+  #svg {
+    height: 150px;
+    width: 150px;
+    stroke: white;
+    fill-opacity: 0;
+    stroke-width: 3px;
+    stroke-dasharray: 1500;
+  }
+  
+  .name-container {
+    height: 30px;
+    overflow: hidden;
+  }
+  
+  .logo-name {
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 12px;
+    text-transform: uppercase;
+    margin-left: 20px;
+    font-weight: bolder;
+  }
+
+  /*aqui termina el preloader */
+
+
+
+  @keyframes cambioGradienteSuave {
+    0% {
+      background: linear-gradient(to bottom right, #d0e8f2, #ffffff);
+    }
+    25% {
+      background: linear-gradient(to bottom right, #e6f0ff, #dff6ff);
+    }
+    50% {
+      background: linear-gradient(to bottom right, #f0faff, #cce7ff);
+    }
+    75% {
+      background: linear-gradient(to bottom right, #e0f7ff, #f5fbff);
+    }
+    100% {
+      background: linear-gradient(to bottom right, #d0e8f2, #ffffff);
+    }
+  }
+  
+  .ofertas {
+    animation: cambioGradienteSuave 20s ease-in-out infinite;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 1650px;
+    margin: 40px auto;
+    overflow: hidden;
+    transition: background 3s ease-in-out;
+  }
+  
+  
+  
+  .contenido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .texto {
+    max-width: 450px;
+    padding: 60px;
+    left: 200px;
+  }
+  
+  .resaltado {
+    font-weight: 900;
+    font-size: 2.8rem;
+    display: block;
+    color: #1e1e1e;
+  }
+  
+  .texto p {
+    font-size: 1rem;
+    color: #333;
+    margin: 20px 0;
+  }
+  
+  .boton {
+    display: inline-block;
+    background-color: #6200ea;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .boton:hover {
+    background-color: #50495a;
+  }
+  
+  .imagenes {
+    position: relative;
+    flex: 1;
+    align-items: center; 
+    justify-content: center;
+  }
+  
+  
+  
+  .pc {
+    position: relative;
+    height: 550px;
+    width: 100%;
+    z-index: 3;
+    bottom: -60px;
+    right: -60px;
+    animation: flotar 3s ease-in-out infinite;
+  }
+
+  @keyframes flotar {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  
+  
+  .grafica1 {
+    position: absolute;
+    top: 60px;
+    left: 110px;
+    height: 500px;
+    width: 500px;
+    z-index: 2;
+  }
+
+  .TargertaMadre{
+    position: absolute;
+    top: -70px;
+    left: 350px;
+    height: 500px;
+    width: 500px;
+    z-index: 1;
+    transform: rotate(-10deg);
+  }
+
+  .VentiladorPc{
+    position: absolute;
+    top: -50px;
+    left: 200px;
+    height: 500px;
+    width: 500px;
+    z-index: 1;
+    transform: rotate(-10deg);
+  }
+  
+  .ram {
+    position: absolute;
+    top: 0px;         /* Ajusta según necesidad */
+    right: -50px;       /* Ajusta según necesidad */
+    width: 750px;       /* Más grande */
+    height: 340px;      /* Más alto */
+    z-index: 2;
+    transform: rotate(-70deg);
+  }
+  
+  
+  .grafica2 {
+    position: absolute;
+    top: 60px;
+    right: -20px;
+    height: 500px;
+    width: 500px;
+    z-index: 2;
+    transform: rotate(-70deg);
+  }
+
+
+  /* Archivo styles.css */
+hr {
+  border: 0; /* Elimina el borde predeterminado */
+  height: 10px; /* Establece el grosor de la línea */
+  
+
+}
+
+
+  
+
+  /*
+  .decoracion1 {
+    position: absolute;
+    background-color: #9b4dff;
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    bottom: 70px;
+    left: 420px;
+    z-index: 1;
+    
+    transform: rotate(30deg);
+  }
+  

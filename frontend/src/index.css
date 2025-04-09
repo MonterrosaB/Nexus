@@ -107,9 +107,17 @@
     font-weight: 900;
     font-style: italic;
   }
-  
-  
 
+
+  body, html {
+    overflow-x: hidden;
+  }
+  
+  /* Aseguramos que el contenido no se desborde */
+  * {
+    box-sizing: border-box;
+  }
+  
 
 
   /*Aqui empieza el preloader*/
@@ -315,11 +323,41 @@
 
 
   /* Archivo styles.css */
-hr {
-  border: 0; /* Elimina el borde predeterminado */
-  height: 10px; /* Establece el grosor de la línea */
+  hr {
+    border: 0; /* Elimina el borde predeterminado */
+    height: 1px; /* Establece el grosor de la línea */
+    background-color: rgba(169, 169, 169, 0.2); /* Gris opaco */
+  }
   
 
+.marquee-wrapper {
+  overflow: hidden;
+  background-color: blue;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 10px 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  width: fit-content;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.marquee-group {
+  display: flex;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 

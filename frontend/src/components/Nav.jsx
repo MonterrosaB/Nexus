@@ -5,7 +5,7 @@ const Nav = () =>{
         <header className=" w-full ">
             <div className="flex items-center justify-around shadow-md rounded-md py-4">
                 <span className="bg-red-600 rounded-full px-8 py-1 color text-white">HOT</span><span>Envío express GRATIS en pedidos de $99 o más</span>
-                <span className="bg-indigo-300 rounded-full px-8  py-1 color font-bold">¿Necesitas ayuda?</span>
+                <span className="bg-[#DDE7F6] rounded-full px-8 py-1 font-bold">¿Necesitas ayuda?</span>
                 <div className="flex border-2 border-blue-800 rounded-full px-10 "><span>+503 7579 6598<span className="bg-blue-800 rounded-full px-4 text-white">Llámanos</span></span></div>
             </div>
             <div className="flex items-center justify-around py-4">

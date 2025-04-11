@@ -107,10 +107,13 @@
     font-weight: 900;
     font-style: italic;
   }
-  
-  
 
-
+@layer base {
+  :root {
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  }
+}
+  
 
   /*Aqui empieza el preloader*/
   
@@ -338,4 +341,18 @@ hr {
     
     transform: rotate(30deg);
   }
+
+  .dropDown{
+    position: absolute;
+    background-color: white;
+    max-width: fit-content;
+  }
+
+  .dropDown li:hover{
+    background-color: grey;
+  }
+
+
+
+
   

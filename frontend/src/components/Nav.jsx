@@ -1,8 +1,14 @@
-import React from "react";
+import React,{ useState} from "react";
+import { ChevronDown } from 'lucide-react';
+import DropDown from "./DropDown";
 
 const Nav = () =>{
+
+    const [ openDropdown, setOpenDropDown] = useState(true);
+
     return (
-        <header className=" w-full ">
+        <>
+                <header className=" w-full ">
             <div className="flex items-center justify-around shadow-md rounded-md py-4">
                 <span className="bg-red-600 rounded-full px-8 py-1 color text-white">HOT</span><span>Envío express GRATIS en pedidos de $99 o más</span>
                 <span className="bg-indigo-300 rounded-full px-8  py-1 color font-bold">¿Necesitas ayuda?</span>
@@ -34,14 +40,24 @@ const Nav = () =>{
             </div>
             <nav className="">
                 <ul className="flex items-center justify-around py-4 font-semibold text-lg">
-                    <li className="items-center"><a href="" className="block py-2 px-3">Categoría de productos</a></li>
-                    <li className="items-center"><a href="" className="block py-2 px-3">Exclusivo Online</a></li>
-                    <li className="items-center"><a href="" className="block">Condiciones de ofertas</a></li>
-                    <li className="items-center"><a href="" className="block">Sobre Nososotros</a></li>
-                    <li className="items-center"><a href="" className="block">Contactanos</a></li>
+                    <li className="py-2 px-3 cursor-pointer" onClick={() => setOpenDropDown
+                        ((prev) => !prev)}>
+                            <div className="flex items-center">Categoría de productos<ChevronDown />
+                            {openDropdown &&( <DropDown/> )
+        }</div>
+                    </li>
+
+                    <li className="py-2 px-3"><a href="">Exclusivo Online</a></li>
+                    <li className="py-2 px-3"><a href="">Condiciones de ofertas</a></li>
+                    <li className="py-2 px-3"><a href="">Sobre Nososotros</a></li>
+                    <li className="py-2 px-3"><a href="">Contactanos</a></li>
                 </ul>
             </nav>
         </header>
+
+        
+        </>
+
     )
 }
 

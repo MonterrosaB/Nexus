@@ -3,8 +3,8 @@ import React from "react";
 const DropDown = () => {
     return (
         <>
-        <div className="flex flex-col justify-between">
-            <ul className=" absolute flex-col gap-4 dropDown">
+        <div className="absolute top-10 left-0 bg-white shadow-md p-4 rounded w-48">
+            <ul className="text-sm text-gray-700">
                             <li><a href="">PCs</a></li>
                             <li><a href="">Consola</a></li>
                             <li><a href="">Accesorios</a></li>

@@ -1,9 +1,8 @@
 import './App.css'
 import Navbar from "./components/Nav"
 import { BrowserRouter as Router, Routes, Route } from "react-router";
-import './App.css';
+
 import HurryUpDeals from './components/HurryUpDeals';
-import Navbar from "./components/Nav";
 import PopularCategories from "./components/PopularCategories"
 import { useEffect } from "react";
 
@@ -21,11 +20,10 @@ function App() {
 <Router>
       <Navbar />
       <Routes>
-      <Route path="/dragon" />
-      <Route path="/ricknmorty"/>
+      <Route path="/" />
+      <Route path="/"/>
       </Routes>
       </Router>
-      <Navbar />
       {/* Sección de Ofertas */}
       <section className="ofertas">
         <div className="contenido">

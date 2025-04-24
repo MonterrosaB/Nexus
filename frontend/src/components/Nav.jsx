@@ -88,7 +88,7 @@ const Nav = () => {
                     </li>
                     <li><Link to={""}>Exclusivo Online</Link></li>
                     <li><Link to={""}>Condiciones de ofertas</Link></li>
-                    <li><Link to={""}>Sobre Nosotros</Link></li>
+                    <li><Link to={"/sobreNosotros"}>Sobre Nosotros</Link></li>
                     <li><Link to={""}>Contáctanos</Link></li>
                 </ul>
             </nav>

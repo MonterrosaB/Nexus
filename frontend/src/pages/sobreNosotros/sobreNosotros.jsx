@@ -36,7 +36,7 @@ const sobreNosotros = () => {
 
     <div class="flex items-center mb-12">
       <div class="w-1/2">
-        <img src={mision} alt="Imagen representativa de la misión" class="rounded-lg w-1/2"/>
+        <img src={mision} alt="Imagen representativa de la misión" class="rounded-lg w-1/2" />
       </div>
       <div class="w-1/2 pl-6">
         <h2 class="text-xl font-semibold text-gray-800">Misión</h2>

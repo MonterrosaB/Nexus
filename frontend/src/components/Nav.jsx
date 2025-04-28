@@ -8,6 +8,9 @@ import {
     ChevronDown
 } from "lucide-react";
 
+import NexusLogo from "../assets/Nexus.svg"
+
+
 import { Link } from "react-router";
 
 
@@ -27,7 +30,7 @@ const Nav = () => {
                     <button className="bg-indigo-300 text-black font-bold px-4 py-1 rounded-full">
                         ¿Necesitas ayuda?
                     </button>
-                    <div className="flex items-center gap-2 border border-blue-800 rounded-full px-4 py-1">
+                    <div className="flex items-center gap-2 border border-blue-800 rounded-full px-4 py-1 box-border">
                         <Phone className="w-4 h-4 text-blue-800" />
                         <span>+503 7579 6598</span>
                         <button className="bg-blue-800 text-white px-3 py-0.5 rounded-full">Llámanos</button>
@@ -38,7 +41,9 @@ const Nav = () => {
             {/* LOGO + SEARCH + ICONS */}
             <div className="flex flex-col md:flex-row items-center justify-between gap-6 px-4 py-4">
                 {/* Logo */}
-                <img src="https://flowbite.com/docs/images/logo.svg" className="h-10" alt="Logo" />
+                <Link to={"/"}>
+                <img src={NexusLogo} className="h-10" alt="Logo" />
+                </Link>
 
                 {/* Search */}
                 <input
@@ -86,10 +91,10 @@ const Nav = () => {
                             </div>
                         )}
                     </li>
-                    <li><Link to={""}>Exclusivo Online</Link></li>
-                    <li><Link to={""}>Condiciones de ofertas</Link></li>
+                    <li><Link to={"/exclusivo-online"}>Exclusivo Online</Link></li>
+                    <li><Link to={"terminos&Condiciones"}>Condiciones de ofertas</Link></li>
                     <li><Link to={"/sobreNosotros"}>Sobre Nosotros</Link></li>
-                    <li><Link to={""}>Contáctanos</Link></li>
+                    <li><Link to={"/contactanos"}>Contáctanos</Link></li>
                 </ul>
             </nav>
         </header>

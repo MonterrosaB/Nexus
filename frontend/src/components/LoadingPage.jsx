@@ -43,10 +43,10 @@ const LoadignPage = () => {
 
     return (
         <>
-            <div class="loading-page">
+            <div className="loading-page">
                 <img id="svg" src={NexusLogo} alt="" />
-                <div class="name-container">
-                    <div class="logo-name">Nexus</div>
+                <div className="name-container">
+                    <div className="logo-name">Nexus</div>
                 </div>
             </div>
         </>

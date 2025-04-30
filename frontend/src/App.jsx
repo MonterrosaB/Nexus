@@ -14,6 +14,7 @@ import Inicio from "./pages/inicio/inicio"
 import CarritoCompras from "./pages/carritoCompras/carritoCompras"
 import ListaDeseos from "./pages/listaDeseos/listaDeseos"
 import Categorias from "./pages/categorias/categorias";
+import Productos from './components/Productos';
 import Producto from "./pages/productos/producto";
 
 
@@ -26,6 +27,8 @@ function App() {
       <main className="min-h-[calc(100vh-/* altura navbar y footer */)]">
         <Routes>
           <Route path="/" element={<Inicio />} />
+          <Route path="/categorias" element={<Categorias/>}/>
+          <Route path="/Productos" element={<Productos/>}/>
           <Route path="/exclusivo-online" element={<ExclusivoOnline />} />
           <Route path="/terminos&Condiciones" element={<TerminosNCondiciones />} />
           <Route path="/sobreNosotros" element={<SobreNosotros />} />
@@ -38,8 +41,11 @@ function App() {
         </Routes>
       </main>
 
-      <Footer />
+    <Footer/>
     </Router>
+    
+
+    
   );
 }
 

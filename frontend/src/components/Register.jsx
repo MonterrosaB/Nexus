@@ -14,7 +14,7 @@ const Register = () => {
   const maxFecha = hoy.toISOString().split("T")[0]; // "YYYY-MM-DD"
 
   return (
-    <div className="min-h-screen bg-[#e3efff] flex items-center justify-center p-4 space-y-8">
+    <div className="min-h-screen flex items-center justify-center p-4 space-y-8">
       <div className="bg-white rounded-3xl overflow-hidden shadow-lg w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 space-y-8">
         {/* Izquierda: Formulario */}
         <div className="p-10">

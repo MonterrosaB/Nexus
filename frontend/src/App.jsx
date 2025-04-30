@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 import Navbar from "./components/Nav";
 import Footer from "./components/Footer";
-import Register from "./components/Register";
-import Login from "./components/Login";
 
 import SobreNosotros from "./pages/sobreNosotros/sobreNosotros"
 import Contactanos from "./pages/contactanos/contactanos"
@@ -16,6 +14,9 @@ import ListaDeseos from "./pages/listaDeseos/listaDeseos"
 import Categorias from "./pages/categorias/categorias";
 import Productos from './components/Productos';
 import Producto from "./pages/productos/producto";
+import Ordenes from "./pages/ordenes/ordenes";
+import Cuenta from "./pages/cuenta/cuenta";
+
 
 
 
@@ -34,10 +35,14 @@ function App() {
           <Route path="/sobreNosotros" element={<SobreNosotros />} />
           <Route path="/contactanos" element={<Contactanos />} />
           <Route path="/listaDeseos" element={<ListaDeseos />} />
+          <Route path="/ordenes" element={<Ordenes />} />
           <Route path="/carrito-de-compras" element={<CarritoCompras />} />
+          <Route path="/cuenta" element={<Cuenta />} />
+
 
           <Route path="/" element = {<Producto/>} />
 
+      <Route path="/producto/:id" element = {<Producto/>} />
         </Routes>
       </main>
 

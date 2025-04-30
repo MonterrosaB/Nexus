@@ -10,7 +10,7 @@ const Login = () => {
 
 
   return (
-<div className="min-h-screen bg-[#e3efff] flex items-center justify-center p-10 md:pt-20 lg:pt-10">
+<div className="min-h-screen flex items-center justify-center p-10 md:pt-20 lg:pt-10">
    <div className="bg-white rounded-3xl overflow-hidden shadow-lg w-full max-w-5xl  grid grid-cols-1 md:grid-cols-2 space-y-8">
         {/* Izquierda: Formulario */}
         <div className="pt-32 md:pt-50 lg:pt-40 px-20">

@@ -1,34 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import RelatedProducts from "../../components/RelatedProducts";
-import ProductDetail from "../../components/Product";
+import Producto from "../../components/Product";
+import { productosBase } from "../../data/productosBase"; // Asegúrate de importar la lista base tu componente que muestra la card grande
 
-const Producto = () => {
-  const  id  = "67dd9fe729fdf77d43a9553a";
-  const [product, setProduct] = useState(null);
+const ProductoPage = () => {
+  const { id } = useParams();
+  const producto = productosBase.find(p => p.id === parseInt(id));
 
-  useEffect(() => {
-    if (!id) return;
-    fetch(`http://localhost:4000/api/products/${id}`)
-      .then((res) => res.json())
-      .then((data) => setProduct(data))
-      .catch((err) => console.error("Error al obtener producto:", err));
-  }, [id]);
+  if (!producto) return <p className="text-center mt-10">Producto no encontrado</p>;
 
   return (
-    <div className="bg-white text-black">
-      <ProductDetail product={product} />
-      <div className="mt-10 p-6">
-        <h2 className="text-xl font-bold mb-2">Productos relacionados</h2>
-        {product && (
-          <RelatedProducts
-            category={product.idCategory}
-            currentId={product._id}
-          />
-        )}
-      </div>
+    <div className="p-4 max-w-7xl mx-auto">
+      <Producto product={producto} />
     </div>
   );
 };
 
-export default Producto;
+export default ProductoPage;

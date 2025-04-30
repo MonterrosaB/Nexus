@@ -70,11 +70,11 @@ const Nav = () => {
           </li>
           <li className="flex items-center gap-1">
             <Package className="w-5 h-5" />
-            <Link to={""}>Seguimiento de pedido</Link>
+            <Link to={"/ordenes"}>Seguimiento de pedido</Link>
           </li>
           <li className="flex items-center gap-1">
             <User className="w-5 h-5" />
-            <Link to={""}>Cuenta</Link>
+            <Link to={"/cuenta"}>Cuenta</Link>
           </li>
           <li>
             <Link to={"/carrito-de-compras"}>

@@ -335,7 +335,96 @@
     height: 1px; /* Establece el grosor de la línea */
     background-color: rgba(169, 169, 169, 0.2); /* Gris opaco */
   }
+
+
+  @media (max-width: 768px) {
+    .contenido {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
   
+    .texto {
+      padding: 20px;
+      max-width: 100%;
+    }
+  
+    .imagenes {
+      position: relative;
+      width: 100%;
+      height: auto;
+      transform: scale(0.6); /* Reducimos todo el conjunto */
+      margin-top: -60px;     /* Ajustamos la posición vertical */
+      margin-bottom: -100px;
+    }
+  
+    .imagenes img {
+      
+      max-width: unset;
+      max-height: unset;
+    }
+    .grafica1 {
+      position: absolute;
+      top: 60px;
+      left: 110px;
+      z-index: 2;
+      transform: rotate(-140deg);
+    }
+
+    .grafica2 {
+      position: absolute;
+      top: 60px;
+      right: -20px;
+      z-index: 2;
+      transform: rotate(-120deg);
+    }
+
+    .ram {
+      position: absolute;
+      top: 0px;        
+      right: -50px;       
+
+      z-index: 2;
+      transform: rotate(-170deg);
+    }
+
+    .VentiladorPc{
+      position: absolute;
+      top: -50px;
+      left: 95px;
+  
+      z-index: 1;
+      transform: rotate(-10deg);
+    }
+
+    .TargertaMadre{
+      position: absolute;
+      top: -70px;
+      left: -100px;
+      
+      z-index: 1;
+      transform: rotate(-10deg);
+    }
+    
+    .pc {
+     
+      height: 550px;
+      width: 850px;
+      left: -280px;
+    
+    }
+  
+  
+    .decoracion {
+      display: none;
+    }
+  }
+  
+
+
+ 
+  
+ 
 
 .marquee-wrapper {
   overflow: hidden;

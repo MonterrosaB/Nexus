@@ -11,6 +11,9 @@ import ExclusivoOnline from "./pages/exclusivoOnline/exclusivoOnline"
 import Inicio from "./pages/inicio/inicio"
 import CarritoCompras from "./pages/carritoCompras/carritoCompras"
 import ListaDeseos from "./pages/listaDeseos/listaDeseos"
+import Categorias from "./pages/categorias/categorias";
+import Productos from "./components/Productos";
+
 
 
 
@@ -25,6 +28,9 @@ function App() {
 
       <Routes>
       <Route path="/" element={<Inicio/>} />  
+      <Route path="/Categorias" element={<Categorias/>}/>
+      <Route path="/productos" element={<Productos />} />
+
       <Route path="/exclusivo-online" element={<ExclusivoOnline/>} />  
       <Route path="/terminos&Condiciones" element={<TerminosNCondiciones/>} />  
       <Route path="/sobreNosotros" element={<SobreNosotros/>} />  

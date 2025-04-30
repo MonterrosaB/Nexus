@@ -6,13 +6,17 @@ import Footer from "./components/Footer";
 import Register from "./components/Register";
 import Login from "./components/Login";
 
-import SobreNosotros from "./pages/sobreNosotros/sobreNosotros";
-import Contactanos from "./pages/contactanos/contactanos";
-import TerminosNCondiciones from "./pages/terminosYCondiciones/terminosYCondiciones";
-import ExclusivoOnline from "./pages/exclusivoOnline/exclusivoOnline";
-import Inicio from "./pages/inicio/inicio";
-import CarritoCompras from "./pages/carritoCompras/carritoCompras";
-import ListaDeseos from "./pages/listaDeseos/listaDeseos";
+import SobreNosotros from "./pages/sobreNosotros/sobreNosotros"
+import Contactanos from "./pages/contactanos/contactanos"
+import TerminosNCondiciones from "./pages/terminosYCondiciones/terminosYCondiciones"
+import ExclusivoOnline from "./pages/exclusivoOnline/exclusivoOnline"
+import Inicio from "./pages/inicio/inicio"
+import CarritoCompras from "./pages/carritoCompras/carritoCompras"
+import ListaDeseos from "./pages/listaDeseos/listaDeseos"
+import Categorias from "./pages/categorias/categorias";
+import Producto from "./pages/productos/producto";
+
+
 
 function App() {
   return (
@@ -28,6 +32,9 @@ function App() {
           <Route path="/contactanos" element={<Contactanos />} />
           <Route path="/listaDeseos" element={<ListaDeseos />} />
           <Route path="/carrito-de-compras" element={<CarritoCompras />} />
+
+          <Route path="/" element = {<Producto/>} />
+
         </Routes>
       </main>
 

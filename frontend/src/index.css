@@ -374,9 +374,9 @@
     .grafica2 {
       position: absolute;
       top: 60px;
-      right: -20px;
+      right: -1px;
       z-index: 2;
-      transform: rotate(-120deg);
+      transform: rotate(-150deg);
     }
 
     .ram {

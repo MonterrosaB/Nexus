@@ -92,34 +92,51 @@ const PopularCategories = () => {
       <h2 className="text-2xl font-bold mb-6">Popular Categories</h2>
 
       <div className="relative">
-        {/* Carrusel horizontal sin scroll */}
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-hidden scrollbar-hide w-full"
-          onMouseDown={handleMouseDown}
-          onMouseLeave={handleMouseLeave}
-          onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
-          onTouchStart={handleTouchStart} // Soporte para toques (móviles)
-          onTouchEnd={handleTouchEnd}     // Soporte para cuando se termina el toque
-          onTouchMove={handleTouchMove}   // Soporte para mover el carrusel con el dedo
-        >
-          {categories.map((category) => (
-            <div
-              key={category.name}
-              className="min-w-[250px] sm:min-w-[300px] md:min-w-[350px] bg-[#e5fafc] bg-opacity-70 rounded-2xl shadow-lg flex-shrink-0 flex flex-col items-center p-6 text-center hover:shadow-xl transition h-[400px]"
-            >
-              <img
-                src={category.image}
-                alt={category.name}
-                className="w-50 h-60 object-cover mb-4 rounded-lg"
-              />
-              <h3 className="font-semibold text-xl mb-2">{category.name}</h3>
-              <p className="text-gray-500 text-sm">{category.products} products</p>
-            </div>
-          ))}
-        </div>
+  {/* Botón Izquierdo */}
+  <button
+    onClick={() => scrollRef.current.scrollBy({ left: -300, behavior: "smooth" })}
+    className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-md"
+  >
+    ◀
+  </button>
+
+  {/* Botón Derecho */}
+  <button
+    onClick={() => scrollRef.current.scrollBy({ left: 300, behavior: "smooth" })}
+    className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-md"
+  >
+    ▶
+  </button>
+
+  {/* Carrusel horizontal sin scroll */}
+  <div
+    ref={scrollRef}
+    className="flex gap-6 overflow-hidden scrollbar-hide w-full"
+    onMouseDown={handleMouseDown}
+    onMouseLeave={handleMouseLeave}
+    onMouseUp={handleMouseUp}
+    onMouseMove={handleMouseMove}
+    onTouchStart={handleTouchStart}
+    onTouchEnd={handleTouchEnd}
+    onTouchMove={handleTouchMove}
+  >
+    {categories.map((category) => (
+      <div
+        key={category.name}
+        className="min-w-[250px] sm:min-w-[300px] md:min-w-[350px] bg-[#e5fafc] bg-opacity-70 rounded-2xl shadow-lg flex-shrink-0 flex flex-col items-center p-6 text-center hover:shadow-xl transition h-[400px]"
+      >
+        <img
+          src={category.image}
+          alt={category.name}
+          className="w-50 h-60 object-cover mb-4 rounded-lg"
+        />
+        <h3 className="font-semibold text-xl mb-2">{category.name}</h3>
+        <p className="text-gray-500 text-sm">{category.products} products</p>
       </div>
+    ))}
+  </div>
+</div>
+
     </div>
   );
 };

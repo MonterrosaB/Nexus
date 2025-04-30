@@ -4,6 +4,7 @@ import HurryUpDeals from '../../components/HurryUpDeals';
 import PopularCategories from "../../components/PopularCategories"
 import LoadingPage from "../../components/LoadingPage"
 import { useEffect, useState } from "react";
+import BundleProducts from "../../components/bundleProducts";
 
 import '../../index.css'
 
@@ -105,6 +106,8 @@ const inicio = () => {
           </div>
        </div>
      </div>
+
+     <BundleProducts/>
       
 
 

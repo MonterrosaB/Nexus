@@ -87,30 +87,8 @@ const Nav = () => {
       {/* NAV MENU */}
       <nav className="border-t border-gray-200">
         <ul className={`flex-col md:flex-row md:flex items-start md:items-center justify-center md:justify-around py-4 font-semibold text-base gap-4 px-4 md:px-0 ${mobileMenuOpen ? 'flex' : 'hidden'} md:flex`}>
-          <li
-            className="flex items-center gap-1 cursor-pointer relative"
-            onClick={() => setOpenDropDown(!openDropdown)}
-          >
-            Categoría de productos <ChevronDown className="w-4 h-4" />
-            {openDropdown && (
-              <div className="absolute top-10 left-0 bg-white shadow-md p-4 rounded w-48 z-50">
-                <Link>
-                  <p className="text-sm text-gray-700 m-0.5 hover:bg-amber-300">
-                    Ejemplo de dropdown
-                  </p>
-                </Link>
-                <Link>
-                  <p className="text-sm text-gray-700 m-0.5 hover:bg-amber-300">
-                    Ejemplo de dropdown
-                  </p>
-                </Link>
-                <Link>
-                  <p className="text-sm text-gray-700 m-0.5 hover:bg-amber-300">
-                    Ejemplo de dropdown
-                  </p>
-                </Link>
-              </div>
-            )}
+          <li>
+            <Link to={"/categorias"}>Categorias</Link>
           </li>
           <li>
             <Link to={"/exclusivo-online"}>Exclusivo Online</Link>

@@ -7,7 +7,7 @@ const bundleProducts = [
     priceRange: "$112.00 – $114.00",
     rating: 4.5,
     colors: ["#00bcd4", "#607d8b"],
-    image: "https://via.placeholder.com/200x120?text=Tablet+Case",
+    image: "https://p3-ofp.static.pub/fes/cms/2022/10/07/508rdgoxub3ju6cb3bjfpkdyg4hg5l587495.png",
   },
   {
     name: "15W Power Adapter",
@@ -15,7 +15,7 @@ const bundleProducts = [
     priceRange: "$5.00 – $7.00",
     rating: 4,
     colors: ["#000", "#cfd8dc", "#8bc34a"],
-    image: "https://via.placeholder.com/200x120?text=Power+Adapter",
+    image: "https://samsungplusnuevo.s3.amazonaws.com/product-family-item-image-image/normal/product-family-item-image-image_fPl32Ctc06QGxahv1TnD.png",
   },
   {
     name: "RTX 4090",
@@ -23,7 +23,7 @@ const bundleProducts = [
     priceRange: "$164.00 – $200.00",
     rating: 5,
     colors: ["#000", "#2196f3"],
-    image: "https://via.placeholder.com/200x120?text=GPU+4090",
+    image: "https://images.nvidia.com/aem-dam/Solutions/geforce/ada/news/rtx-40-series-graphics-cards-announcements/geforce-rtx-4090-product-photo-002.png",
   },
   {
     name: "RTX 4090",
@@ -31,7 +31,7 @@ const bundleProducts = [
     priceRange: "$164.00 – $200.00",
     rating: 5,
     colors: ["#000", "#2196f3"],
-    image: "https://via.placeholder.com/200x120?text=GPU+4090",
+    image: "https://images.nvidia.com/aem-dam/Solutions/geforce/ada/news/rtx-40-series-graphics-cards-announcements/geforce-rtx-4090-product-photo-002.png",
   },
 ];
 

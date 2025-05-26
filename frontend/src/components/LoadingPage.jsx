@@ -36,7 +36,7 @@ const LoadignPage = () => {
           // Agregar efecto pulsante al logo (imagen SVG)
           window.gsap.fromTo("#svg",
             { opacity: 0, scale: 0.5, rotation: -90 },
-            { opacity: 1, scale: 1, rotation: 0, duration: 2, ease: "elastic.out(1, 0.5)" }
+            { opacity: 1, scale: 1, rotation: 0, duration: 3, ease: "elastic.out(1, 0.5)" }
           );
         }
       }, []);

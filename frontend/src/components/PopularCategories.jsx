@@ -9,17 +9,17 @@ const categories = [
   {
     name: "Screen Protectors",
     products: 4,
-    image: "https://via.placeholder.com/100x150?text=Screen+Protector",
+    image: "https://png.pngtree.com/png-clipart/20240416/original/pngtree-glass-screen-protector-png-image_14865511.png",
   },
   {
     name: "MagSafe",
     products: 2,
-    image: "https://via.placeholder.com/100x150?text=MagSafe",
+    image: "https://sv.tiendasishop.com/cdn/shop/files/IMG-14728049.png?v=1731376221&width=1920",
   },
   {
     name: "Cables",
     products: 5,
-    image: "https://via.placeholder.com/100x150?text=Cable",
+    image: "https://static.vecteezy.com/system/resources/previews/021/938/693/non_2x/charger-cable-accessories-isolated-on-a-transparent-background-png.png",
   },
   {
     name: "Chargers",
@@ -29,12 +29,12 @@ const categories = [
   {
     name: "Power Banks",
     products: 3,
-    image: "https://via.placeholder.com/100x150?text=Power+Bank",
+    image: "https://png.pngtree.com/png-clipart/20240927/original/pngtree-a-power-bank-png-image_16106655.png",
   },
   {
     name: "Adapters",
     products: 3,
-    image: "https://via.placeholder.com/100x150?text=Adapter",
+    image: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1675861884/Croma%20Assets/Communication/Chargers%20and%20Batteries/Images/256567_0_vtwtai.png?tr=w-600",
   },
 ];
 

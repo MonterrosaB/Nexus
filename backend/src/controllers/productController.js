@@ -2,16 +2,31 @@ import Products from "../models/productModel.js";
 
 const productsController = {};
 
-productsController.getProduct = async (req, res) => {
+productsController.getProducts = async (req, res) => {
 
     const products = await Products
    .find()
-   .populate('idCategory')
-    .populate('idBrand')
-    .populate('idProvider');
+   .populate('idCategory', "name")
+    .populate('idBrand', "name")
+    .populate('idProvider', "company");
 
     res.json(products)
-}                   
+} 
+
+productsController.getProduct = async (req, res) => {
+    try {
+      const product = await Products.findById(req.params.id)
+        .populate("idCategory")
+        .populate("idBrand")
+        .populate("idProvider");
+  
+      if (!product) return res.status(404).json({ message: "Producto no encontrado" });
+  
+      res.json(product);
+    } catch (error) {
+      res.status(500).json({ message: "Error al obtener el producto", error });
+    }
+} 
 
 
 //insert 

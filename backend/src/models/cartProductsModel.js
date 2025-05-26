@@ -27,7 +27,7 @@ const productSchema = new Schema({
 const cartProductSchema = new Schema({
     idCustomer : {
         type : String,
-        require : true,
+        required : true,
         min : 2
     },
     products:

@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 
 import productRoutes from "./src/routes/product.js";
 import orderRoutes from "./src/routes/order.js";
@@ -10,6 +11,8 @@ import cartProductsRoutes from "./src/routes/cartProduct.js";
 import customerRoutes from "./src/routes/customer.js";
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 

@@ -19,7 +19,7 @@ cartProductController.createCartProdcut = async (req, res) => {
 
 //DELETE
 cartProductController.deleteCartProduct = async (req, res) => {
-    await cartProductModel.findOneAndDelete(req.params.id)
+    await cartProductModel.findByIdAndDelete(req.params.id)
     res.json({message : "cart product delete"})
 }
 

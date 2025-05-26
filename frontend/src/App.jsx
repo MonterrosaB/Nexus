@@ -12,7 +12,7 @@ import Inicio from "./pages/inicio/inicio"
 import CarritoCompras from "./pages/carritoCompras/carritoCompras"
 import ListaDeseos from "./pages/listaDeseos/listaDeseos"
 import Categorias from "./pages/categorias/categorias";
-import Productos from './components/Productos';
+import Productos from './pages/Products';
 import Producto from "./pages/productos/producto";
 import Ordenes from "./pages/ordenes/ordenes";
 import Cuenta from "./pages/cuenta/cuenta";
@@ -25,7 +25,6 @@ function App() {
     <Router>
       <Navbar />
 
-      <main className="min-h-[calc(100vh-/* altura navbar y footer */)]">
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/categorias" element={<Categorias/>}/>
@@ -39,12 +38,8 @@ function App() {
           <Route path="/carrito-de-compras" element={<CarritoCompras />} />
           <Route path="/cuenta" element={<Cuenta />} />
 
-
-          <Route path="/" element = {<Producto/>} />
-
       <Route path="/producto/:id" element = {<Producto/>} />
         </Routes>
-      </main>
 
        <Footer/>
     </Router>

@@ -22,17 +22,27 @@ import Cuenta from "./pages/cuenta/cuenta";
 import InicioAdmin from "./pages/admin/AdminInicio/AdminInicio";
 import AgregarProductos from "./pages/admin/AgregarProductos/AgregarProductos";
 import RegistrarDatos from "./pages/admin/RegistrarDatos/RegistrarDatos";
-import Usuarios from "./pages/admin/AgregarUsuarios/AgregarUsuarios";
+import AgregarUsuarios from "./pages/admin/AgregarUsuarios/AgregarUsuarios";
 import Tablas from "./pages/admin/TablasDatos/TablasDatos";
 import Perfil from "./pages/admin/PerfilAdmin/PerfilAdmin";
 import CambiarCuenta from "./pages/admin/CambiarCuenta/CambiarCuenta";
 import AgregarProveedores from "./pages/admin/AgregarProveedores/AgregarProveedores";
 import AgregarMarcas from "./pages/admin/AgregarMarcas/AgregarMarcas";
 import AgregarCategorias from "./pages/admin/AgregarCategorias/AgregarCategorias";
+import Proveedores from "./pages/admin/Colecciones/Proveedores"
+import Usuarios from "./pages/admin/Colecciones/Usuarios"
 
 import { useEffect } from "react";
 
 // Layout que detecta si está en ruta admin
+/*
+
+/admin/categorias
+/admin/proveedores
+/admin/marcas
+/admin/producto
+/admin/usuario
+*/
 function Layout({ children }) {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin");
@@ -74,13 +84,15 @@ function App() {
           <Route path="/admin/inicio" element={<InicioAdmin />} />
           <Route path="/admin/agregar-producto" element={<AgregarProductos />} />
           <Route path="/admin/registrar-datos" element={<RegistrarDatos />} />
-          <Route path="/admin/agregar-usuario" element={<Usuarios />} />
+          <Route path="/admin/agregar-usuario" element={<AgregarUsuarios />} />
           <Route path="/admin/tablas" element={<Tablas />} />
           <Route path="/admin/perfil" element={<Perfil />} />
           <Route path="/admin/cambiar-cuenta" element={<CambiarCuenta />} />
           <Route path="/admin/agregar-proveedores" element={<AgregarProveedores />} />
           <Route path="/admin/agregar-marcas" element={<AgregarMarcas />} />
           <Route path="/admin/agregar-categorias" element={<AgregarCategorias />} />
+          <Route path="/admin/proveedores" element={<Proveedores />} />
+          <Route path="/admin/usuarios" element={<Usuarios />} />
 
         </Routes>
       </Layout>

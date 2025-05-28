@@ -2,7 +2,7 @@ import Reminder from "../../../components/Reminder";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import Image from "../../../assets/proveedores.webp"
-import useDataProviders from "../../../components/Proveedores/useDataProveedores"
+import useDataProviders from "../../../components/hooks/useDataProveedores"
 import { useLocation } from 'react-router';
 import { useEffect } from "react";
 

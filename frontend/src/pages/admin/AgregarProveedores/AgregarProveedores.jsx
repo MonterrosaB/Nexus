@@ -3,32 +3,43 @@ import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import Image from "../../../assets/proveedores.webp"
 import useDataProviders from "../../../components/Proveedores/useDataProveedores"
+import { useLocation } from 'react-router';
+import { useEffect } from "react";
+
 
 
 const AgregarProveedores = () => {
 
+       const location = useLocation();
+    const provider = location.state?.provider;
+
     const {
-    providers,
-        setProviders,
-        loading,
-        setLoading,
         providerName,
-         setProviderName,
+        setProviderName,
         providerLastName,
-         setProviderLastName,
+        setProviderLastName,
         providerCompany,
         setProviderCompany,
-        providerEmail, 
+        providerEmail,
         setproviderEmail,
-        providerPhoneNumber, 
+        providerPhoneNumber,
         setProviderPhoneNumber,
         id,
         setId,
         saveProvider,
-        deleteProduct,
-        updateProduct,
-        handleEdit,
-  } = useDataProviders();
+        handleUpdate,
+    } = useDataProviders();
+
+    useEffect(() => {
+        if (provider) {
+            setId(provider._id);
+            setProviderName(provider.firstName);
+            setProviderLastName(provider.lastName);
+            setProviderCompany(provider.company);
+            setproviderEmail(provider.email);
+            setProviderPhoneNumber(provider.phoneNumber);
+        }
+    }, [provider]);
 
     const data = {
         first: "Recuerda ingresar el Nombre completo del proveedor y la compañía.",
@@ -50,24 +61,24 @@ const AgregarProveedores = () => {
 
             <div>
                 <form action="" className="flex items-center justify-around gap-8">
-                        <img src={Image} alt="" className="w-sm" />
+                    <img src={Image} alt="" className="w-sm" />
                     <div>
                         <h2 className="font-bold text-3xl text-[#2B3674] pb-3">Proveedor</h2>
                         <div className="flex justify-center gap-2">
                             <Input
-                            label={"Nombre del proveedor"}
-                            id={"nombreProveedor"}
-                            type={"text"}
-                            onChange={(e) => setProviderName(e.target.value)}
-                            value={providerName} />
+                                label={"Nombre del proveedor"}
+                                id={"nombreProveedor"}
+                                type={"text"}
+                                onChange={(e) => setProviderName(e.target.value)}
+                                value={providerName} />
                             <Input
-                            label={"Apellido del proveedor"}
-                            id={"apellidoProveedor"}
-                            type={"text"}
-                            onChange={(e) => setProviderLastName(e.target.value)}
-                            value={providerLastName} />
+                                label={"Apellido del proveedor"}
+                                id={"apellidoProveedor"}
+                                type={"text"}
+                                onChange={(e) => setProviderLastName(e.target.value)}
+                                value={providerLastName} />
                         </div>
-                        
+
                         <Input
                             label={"Compañía"}
                             id={"compañia"}
@@ -86,10 +97,17 @@ const AgregarProveedores = () => {
                             type={"string"}
                             onChange={(e) => setProviderPhoneNumber(e.target.value)}
                             value={providerPhoneNumber} />
-                        <Button
-                            text={"Agregar proveedor"}
-                            onClick={saveProvider}
-                        />
+                        {!id ? (
+                            <Button
+                                text={"Agregar proveedor"}
+                                onClick={saveProvider}
+                            />
+                        ) : (
+                            <Button
+                                text={"Actualizar Proveedor"}
+                                onClick={handleUpdate}
+                            />
+                        )}
                     </div>
                 </form>
             </div>

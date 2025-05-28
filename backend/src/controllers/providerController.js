@@ -19,7 +19,7 @@ providerController.createProvider = async (req, res) => {
 
 //DELETE
 providerController.deleteProvider = async (req, res) => {
-    await providerModel.findOneAndDelete(req.params.id)
+    await providerModel.findByIdAndDelete(req.params.id)
     res.json({message : "provider delete"})
 }
 

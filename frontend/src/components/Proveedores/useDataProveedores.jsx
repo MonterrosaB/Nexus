@@ -7,8 +7,11 @@
 */
 
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
+
 
 const useDataProveedores = () => {
+    const navigate = useNavigate();
     const [providers, setProviders] = useState([]);
     const [loading, setLoading] = useState(false);
     const [providerName, setProviderName] = useState("");
@@ -17,6 +20,15 @@ const useDataProveedores = () => {
     const [providerEmail, setproviderEmail] = useState("");
     const [providerPhoneNumber, setProviderPhoneNumber] = useState("");
     const [id, setId] = useState("");
+
+    const cleanData = () => {
+        setProviderName("");
+        setProviderLastName("");
+        setProviderCompany("");
+        setproviderEmail("");
+        setProviderPhoneNumber("");
+        setId("")
+    };
 
     const fetchProviders = async () => {
         const response = await fetch("http://localhost:4000/api/providers");
@@ -58,11 +70,8 @@ const useDataProveedores = () => {
 
         alert("Provedor registrada correctamente");
         fetchProviders();
-        setProviderName("");
-        setProviderLastName("");
-        setProviderCompany("");
-        setproviderEmail("");
-        setProviderPhoneNumber("");
+        cleanData();
+
     };
 
     // useEffect
@@ -70,28 +79,104 @@ const useDataProveedores = () => {
         fetchProviders();
     }, []);
 
+    const deleteProvider = async (id) => {
+        try {
+            const response = await fetch(
+                `http://localhost:4000/api/providers/${id}`,
+                {
+                    method: "DELETE",
+                    body: JSON.stringify(deleteProvider),
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("Error al eliminar el proveedor");
+            }
+
+            const result = await response.json();
+            console.log("Deleted:", result);
+            console.log(id);
+
+            // Actualizar la lista después de borrar
+            fetchProviders();
+        } catch (error) {
+            console.error("Error deleting employee sfs:", error);
+        }
+    };
+
+    const navigateForm = (provider) => {
+        navigate("/admin/agregar-proveedores", { state: { provider } });
+    };
+
+    const updatedProvider = async (provider) => {
+        console.log(provider._id);
+
+        setId(provider._id);
+        setProviderName(provider.firstName);
+        setProviderLastName(provider.lastName);
+        setProviderCompany(provider.company);
+        setproviderEmail(provider.email);
+        setProviderPhoneNumber(provider.phoneNumber);
+        navigateForm(provider);
+    };
+
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+
+        try {
+            const updatedProvider = {
+                firstName : providerName,
+                lastName : providerLastName,
+                company : providerCompany,
+                email : providerEmail,
+                phoneNumber : providerPhoneNumber
+            };
+
+            const response = await fetch(
+                `http://localhost:4000/api/providers/${id}`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(updatedProvider),
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("Error al actualizar el proveedor" + Error);
+            }
+            cleanData();
+            fetchProviders(); // Volver a cargar la lista
+        } catch (error) {
+            alert("Error al actualizar el proveedor");
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return {
         providers,
         setProviders,
         loading,
         setLoading,
         providerName,
-         setProviderName,
+        setProviderName,
         providerLastName,
-         setProviderLastName,
+        setProviderLastName,
         providerCompany,
         setProviderCompany,
-        providerEmail, 
+        providerEmail,
         setproviderEmail,
-        providerPhoneNumber, 
+        providerPhoneNumber,
         setProviderPhoneNumber,
         id,
         setId,
-        saveProvider,/*
-        deleteProduct,
-        updateProduct,
-        handleEdit,
-        onImageChange*/
+        saveProvider,
+        deleteProvider,
+        navigateForm,
+        handleUpdate
     };
 }
 export default useDataProveedores;

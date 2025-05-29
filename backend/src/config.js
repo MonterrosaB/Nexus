@@ -16,3 +16,5 @@ export const config = {
         cloudinary_api_secret: process.env.CLOUDINARY_API_SECRET
     }
 }
+
+export const TOKEN_SECRET = "SOME SECRET KEY"

@@ -13,9 +13,12 @@
 */
 
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 
 
 const useDataUsuarios = () => {
+
+  const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [dui, setUserDUI] = useState("");
@@ -31,6 +34,22 @@ const useDataUsuarios = () => {
   const [userStatus, setUserStatus] = useState(false);
   const [id, setId] = useState("");
 
+
+
+  const cleanData = () => {
+    setUserDUI("");
+    setUserFirstName("");
+    setUserRole("");
+    setUserEmail("");
+    setUsername("");
+    setUserPassword("");
+    setUserPhoneNumber("");
+    setUserBirthdate("");
+    setUserSex("");
+    setUserStatus("");
+    setId("")
+  };
+
   const fetchUsers = async () => {
     const response = await fetch("http://localhost:4000/api/users");
 
@@ -39,44 +58,43 @@ const useDataUsuarios = () => {
     }
 
     const data = await response.json();
-    console.log(data);
-    
+
     setUsers(data);
     setLoading(false);
   };
 
-      // useEffect
-      useEffect(() => {
-        fetchUsers();
-    }, []);
-  
+  // useEffect
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
   const saveUser = async (e) => {
     e.preventDefault();
 
     const newUser = {
-        dui : DUI,
-        firstName : userFirstName,
-        lastName : userLastName,
-        role : userRole,
-        email : userEmail,
-        username : username,
-        password : userPassword,
-        phoneNumber : userPhoneNumber,
-        birthDate : userBirthdate,
-        sex : userSex,
-        status : userStatus
+      dui: dui,
+      firstName: userFirstName,
+      lastName: userLastName,
+      role: userRole,
+      email: userEmail,
+      username: username,
+      password: userPassword,
+      phoneNumber: userPhoneNumber,
+      birthDate: userBirthdate,
+      sex: userSex,
+      status: userStatus
     };
 
     const response = await fetch("http://localhost:4000/api/users", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUser),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
     });
 
     if (!response.ok) {
-        throw new Error("Hubo un error al registrar el usuario");
+      throw new Error("Hubo un error al registrar el usuario");
     }
 
     const data = await response.json();
@@ -84,7 +102,76 @@ const useDataUsuarios = () => {
 
     alert("Usuario registrada correctamente");
     fetchUsers();
-};
+  };
+
+  const deleteUser = async (id) => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/users/${id}`,
+        {
+          method: "DELETE",
+          body: JSON.stringify(deleteUser),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Error al eliminar el proveedor");
+      }
+
+      const result = await response.json();
+      console.log("Deleted:", result);
+
+      // Actualizar la lista después de borrar
+      fetchUsers();
+    } catch (error) {
+      console.error("Error deleting employee sfs:", error);
+    }
+  };
+
+  const navigateForm = (user) => {
+    navigate("/admin/agregar-usuario", { state: { user } });
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    try {
+      const updatedUser = {
+        dui: dui,
+        firstName: userFirstName,
+        lastName: userLastName,
+        role: userRole,
+        email: userEmail,
+        username: username,
+        phoneNumber: userPhoneNumber,
+        birthDate: userBirthdate,
+        sex: userSex,
+        status: userStatus
+      };
+
+      const response = await fetch(
+        `http://localhost:4000/api/users/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedUser),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Error al actualizar el usuario" + Error);
+      }
+      cleanData();
+      fetchUsers(); // Volver a cargar la lista
+    } catch (error) {
+      alert("Error al actualizar el usuario");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
 
   return {
@@ -102,7 +189,8 @@ const useDataUsuarios = () => {
     userSex, setUserSex,
     userStatus, setUserStatus,
     id, setId,
-    saveUser
+    saveUser, deleteUser,
+    handleUpdate, navigateForm
   };
 
 };

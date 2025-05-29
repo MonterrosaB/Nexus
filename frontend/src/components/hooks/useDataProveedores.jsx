@@ -108,28 +108,16 @@ const useDataProveedores = () => {
         navigate("/admin/agregar-proveedores", { state: { provider } });
     };
 
-    const updatedProvider = async (provider) => {
-        console.log(provider._id);
-
-        setId(provider._id);
-        setProviderName(provider.firstName);
-        setProviderLastName(provider.lastName);
-        setProviderCompany(provider.company);
-        setproviderEmail(provider.email);
-        setProviderPhoneNumber(provider.phoneNumber);
-        navigateForm(provider);
-    };
-
     const handleUpdate = async (e) => {
         e.preventDefault();
 
         try {
             const updatedProvider = {
-                firstName : providerName,
-                lastName : providerLastName,
-                company : providerCompany,
-                email : providerEmail,
-                phoneNumber : providerPhoneNumber
+                firstName: providerName,
+                lastName: providerLastName,
+                company: providerCompany,
+                email: providerEmail,
+                phoneNumber: providerPhoneNumber
             };
 
             const response = await fetch(

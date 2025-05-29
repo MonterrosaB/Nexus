@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 const AgregarProveedores = () => {
 
-       const location = useLocation();
+    const location = useLocation();
     const provider = location.state?.provider;
 
     const {

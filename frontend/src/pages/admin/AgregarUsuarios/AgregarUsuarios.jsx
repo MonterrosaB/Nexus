@@ -3,40 +3,16 @@ import Input from "../../../components/Input";
 import DropDown from "../../../components/DropDown";
 import Button from "../../../components/Button";
 import Image from "../../../assets/image.webp"
-import React, { useState, useEffect } from "react";
-
 
 import useDataUsuarios from "../../../components/hooks/useDataUsuarios";
 
+import { useEffect } from "react";
+import { useLocation } from 'react-router';
+
 const AgregarUsuarios = () => {
 
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-
-  const fetchCategories = async () => {
-    try {
-      const res = await fetch('http://localhost:4000/api/categories');
-      const data = await res.json();
-      const opcionesFormateadas = data.map(cat => ({
-        _id: cat._id,
-        label: cat.name,
-      }));
-      setCategories(opcionesFormateadas);
-    } catch (error) {
-      console.error('Error al cargar categorías:', error);
-    }
-  };
-
-  // useEffect
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
-  const handleCategoriaChange = (e) => {
-    const idSeleccionado = e.target.value;
-    console.log('Categoría seleccionada:', idSeleccionado);
-  };
+  const location = useLocation();
+  const user = location.state?.user;
 
   const {
     dui, setUserDUI,
@@ -51,9 +27,45 @@ const AgregarUsuarios = () => {
     userSex, setUserSex,
     userStatus, setUserStatus,
     id, setId,
-    saveUser
+    saveUser, handleUpdate
   } =
     useDataUsuarios();
+
+  useEffect(() => {
+    if (user) {
+      setId(user._id);
+      setUserDUI(user.dui);
+      setUserFirstName(user.firstName);
+      setUserLastName(user.lastName);
+      setUserRole(user.role);
+      setUserEmail(user.email);
+      setUsername(user.username);
+      setUserPhoneNumber(user.phoneNumber);
+      setUserBirthdate(user.birthDate);
+      setUserSex(user.sex);
+      setUserStatus(!!user.status);
+
+      if (user.birthDate) {
+        const fechaFormateada = new Date(user.birthDate).toISOString().split('T')[0];
+        setUserBirthdate(fechaFormateada);
+      }
+    }
+  }, [user]);
+
+  const opcionesSexo = [
+    { _id: 'M', label: 'Masculino' },
+    { _id: 'F', label: 'Femenino' }
+  ];
+
+  const opcionesEstado = [
+    { _id: true, label: 'Activo' },
+    { _id: false, label: 'Inactivo' }
+  ];
+
+  const opcionesRol = [
+    { _id: 'Admin', label: 'Admin' },
+    { _id: 'Vendedor', label: 'Vendedor' }
+  ];
 
   const data = {
     first: "Se debe llenar todos los campos; de lo contrario, aparecerá un error indicando el/los campos.",
@@ -62,8 +74,6 @@ const AgregarUsuarios = () => {
     subTwo: "-El número de teléfono debe contener solo números.",
     third: "El rol es obligatorio para definir los permisos del usuario."
   };
-
-  if (loading) return <p>Cargando...</p>;
 
 
   return (
@@ -76,7 +86,7 @@ const AgregarUsuarios = () => {
         thirdOne={data.third}
       />
       <div>
-        <form action="" className="flex items-center justify-around gap-8">
+        <form action="" className=" items-center justify-around gap-8">
           <div>
             <h2 className="font-bold text-3xl text-[#2B3674] pb-3">Usuario</h2>
 
@@ -110,13 +120,16 @@ const AgregarUsuarios = () => {
               onChange={(e) => setUsername(e.target.value)}
               value={username}
             />
-            <Input
-              label={"Contraseña"}
-              id={"contraseña"}
-              type={"password"}
-              onChange={(e) => setUserPassword(e.target.value)}
-              value={userPassword}
-            />
+            {!id && (
+              <Input
+                label="Contraseña"
+                id="contraseña"
+                type="password"
+                onChange={(e) => setUserPassword(e.target.value)}
+                value={userPassword}
+              />
+            )}
+
             <div className="flex justify-center items-center gap-4">
               <Input
                 label={"DUI"}
@@ -136,34 +149,42 @@ const AgregarUsuarios = () => {
               <DropDown
                 id="sexo"
                 label="sexo"
-                options={[
-                  { value: "M", label: "Masculino" },
-                  { value: "F", label: "Femenino" }
-                ]}
+                options={opcionesSexo}
+                onChange={(e) => setUserSex(e.target.value)}
+                value={userSex}
               />
-              <Input
-                label={"Fecha de Nacimiento"}
-                id={"birth"}
-                type={"date"} />
-
               <DropDown
-                id="categoria"
-                label="categorias"
-                options={categories}
-                onChange={handleCategoriaChange}
+                id={"estado"}
+                label={"Estado"}
+                options={opcionesEstado}
+                onChange={(e) => setUserStatus(e.target.value)}
+                value={userStatus}
+              />
+              <DropDown
+                id="rol"
+                label="Rol"
+                options={opcionesRol}
+                onChange={(e) => setUserRole(e.target.value)}
+                value={userRole}
               />
             </div>
-            <Button
-              text={"Agregar Usuario"}
-              onClick={saveUser}
-            />
-          </div>
-          <div className="flex items-center justify-center flex-col bg-[#FFF] p-8 gap-8 rounded-md shadow-md w-lg h-full">
-            <img src={Image} alt="" className="" />
-            <label className="bg-[#DFEAF6] w-full p-2.5 rounded-lg font-medium cursor-pointer mx-auto flex items-center justify-center" id="">
-              <span>Agrega una imagen</span>
-              <input type="file" className="hidden" id="" />
-            </label>
+            <Input
+              label={"f. de nac"}
+              id={"birth"}
+              type={"date"}
+              onChange={(e) => setUserBirthdate(e.target.value)}
+              value={userBirthdate} />
+            {!id ? (
+              <Button
+                text={"Agregar Usuario"}
+                onClick={saveUser}
+              />
+            ) : (
+              <Button
+                text={"Actualizar Proveedor"}
+                onClick={handleUpdate}
+              />
+            )}
           </div>
         </form>
       </div>

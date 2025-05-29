@@ -1,4 +1,4 @@
-const DropDown = ({ id, label, options, onChange }) => {
+const DropDown = ({ id, label, options, onChange, value }) => {
     return (
         <>
             <div className="relative mb-8 w-full">
@@ -7,7 +7,7 @@ const DropDown = ({ id, label, options, onChange }) => {
                     name={id}
                     onChange={onChange} // 👈 AQUÍ va el onChange
                     className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#8d8c8c] bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    defaultValue=""
+                    value={value}
                 >
                     <option value="" disabled hidden>Selecciona Algo</option>
                     {options.map((opt) => (

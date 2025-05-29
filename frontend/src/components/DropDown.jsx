@@ -1,22 +1,23 @@
-const DropDown = ({id, label, options}) => {
+const DropDown = ({ id, label, options, onChange }) => {
     return (
         <>
             <div className="relative mb-8 w-full">
                 <select
                     id={id}
                     name={id}
+                    onChange={onChange} // 👈 AQUÍ va el onChange
                     className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#8d8c8c] bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     defaultValue=""
                 >
                     <option value="" disabled hidden>Selecciona Algo</option>
                     {options.map((opt) => (
                         <option
-                            key={opt.value}
-                            value={opt.value}
+                            key={opt._id}
+                            value={opt._id}
                             style={{
-                                color: "#8d8c8c", // text-[#8d8c8c]
-                                fontWeight: "400", // font-normal
-                                fontSize: "1rem",  // text-base
+                                color: "#8d8c8c",
+                                fontWeight: "400",
+                                fontSize: "1rem",
                             }}
                         >
                             {opt.label}

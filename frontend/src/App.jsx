@@ -34,12 +34,15 @@ import CambiarCuenta from "./pages/admin/CambiarCuenta/CambiarCuenta";
 import AgregarProveedores from "./pages/admin/AgregarProveedores/AgregarProveedores";
 import AgregarMarcas from "./pages/admin/AgregarMarcas/AgregarMarcas";
 import AgregarCategorias from "./pages/admin/AgregarCategorias/AgregarCategorias";
-import Proveedores from "./pages/admin/Colecciones/Proveedores";
-import Usuarios from "./pages/admin/Colecciones/Usuarios";
+import Proveedores from "./pages/admin/Colecciones/Proveedores"
+import Usuarios from "./pages/admin/Colecciones/Usuarios"
 
-import Register from "./pages/register";
-import Login from "./pages/login";
+import ProductosAdmin from "./pages/admin/Colecciones/Productos"
+import Marcas from "./pages/admin/Colecciones/Marcas"
+import CategoriasAdmin from "./pages/admin/Colecciones/Categorias"
+
 import { AuthProvider } from "./context/authContext";
+
 
 import { useEffect } from "react";
 
@@ -61,7 +64,7 @@ function Layout({ children }) {
       {!isAdminRoute && <Navbar />}
       {isAdminRoute && <NavAdmin />}
 
-      <main className={`min-h-screen ${isAdminRoute ? "ml-64" : ""}`}>
+      <main className={`min-h-screen ${isAdminRoute ? "lg:ml-64" : ""}`}>
         {children}
       </main>
 
@@ -72,43 +75,50 @@ function Layout({ children }) {
 
 function App() {
   return (
-    <Router>
-  <AuthProvider>
-    <Layout>
-      <Routes>
-        {/* Rutas públicas */}
-        <Route path="/" element={<Inicio />} />
-        <Route path="/login" element={<Login />} />
+      <AuthProvider>
+        <Router>
+        <Layout>
+          <Routes>
+            {/* Rutas públicas */}
+            <Route path="/" element={<Inicio />} />
+            <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/categorias" element={<Categorias />} />
-        <Route path="/productos" element={<Productos />} />
-        <Route path="/producto/:id" element={<Producto />} />
-        <Route path="/exclusivo-online" element={<ExclusivoOnline />} />
-        <Route path="/terminos&Condiciones" element={<TerminosNCondiciones />} />
-        <Route path="/sobreNosotros" element={<SobreNosotros />} />
-        <Route path="/contactanos" element={<Contactanos />} />
-        <Route path="/listaDeseos" element={<ListaDeseos />} />
-        <Route path="/ordenes" element={<Ordenes />} />
-        <Route path="/carrito-de-compras" element={<CarritoCompras />} />
-        <Route path="/cuenta" element={<Cuenta />} />
+            <Route path="/categorias" element={<Categorias />} />
+            <Route path="/productos" element={<Productos />} />
+            <Route path="/producto/:id" element={<Producto />} />
+            <Route path="/exclusivo-online" element={<ExclusivoOnline />} />
+            <Route
+              path="/terminos&Condiciones"
+              element={<TerminosNCondiciones />}
+            />
+            <Route path="/sobreNosotros" element={<SobreNosotros />} />
+            <Route path="/contactanos" element={<Contactanos />} />
+            <Route path="/listaDeseos" element={<ListaDeseos />} />
+            <Route path="/ordenes" element={<Ordenes />} />
+            <Route path="/carrito-de-compras" element={<CarritoCompras />} />
+            <Route path="/cuenta" element={<Cuenta />} />
 
-        {/* Rutas admin */}
-        <Route path="/admin/inicio" element={<InicioAdmin />} />
-        <Route path="/admin/agregar-producto" element={<AgregarProductos />} />
-        <Route path="/admin/registrar-datos" element={<RegistrarDatos />} />
-        <Route path="/admin/agregar-usuario" element={<AgregarUsuarios />} />
-        <Route path="/admin/tablas" element={<Tablas />} />
-        <Route path="/admin/perfil" element={<Perfil />} />
-        <Route path="/admin/cambiar-cuenta" element={<CambiarCuenta />} />
-        <Route path="/admin/agregar-proveedores" element={<AgregarProveedores />} />
-        <Route path="/admin/agregar-marcas" element={<AgregarMarcas />} />
-        <Route path="/admin/agregar-categorias" element={<AgregarCategorias />} />
-        <Route path="/admin/proveedores" element={<Proveedores />} />
-        <Route path="/admin/usuarios" element={<Usuarios />} />
-      </Routes>
-    </Layout>
-  </AuthProvider>
-</Router>
+          {/* Rutas admin */}
+          <Route path="/admin/inicio" element={<InicioAdmin />} />
+          <Route path="/admin/agregar-producto" element={<AgregarProductos />} />
+          <Route path="/admin/registrar-datos" element={<RegistrarDatos />} />
+          <Route path="/admin/agregar-usuario" element={<AgregarUsuarios />} />
+          <Route path="/admin/tablas" element={<Tablas />} />
+          <Route path="/admin/perfil" element={<Perfil />} />
+          <Route path="/admin/cambiar-cuenta" element={<CambiarCuenta />} />
+          <Route path="/admin/agregar-proveedores" element={<AgregarProveedores />} />
+          <Route path="/admin/agregar-marcas" element={<AgregarMarcas />} />
+          <Route path="/admin/agregar-categorias" element={<AgregarCategorias />} />
+          <Route path="/admin/proveedores" element={<Proveedores />} />
+          <Route path="/admin/usuarios" element={<Usuarios />} />
+           <Route path="/admin/producto" element={<ProductosAdmin />} />
+          <Route path="/admin/marcas" element={<Marcas />} />
+          <Route path="/admin/categorias" element={<CategoriasAdmin />} />
+
+        </Routes>
+      </Layout>
+    </Router>
+      </AuthProvider>
   );
 }
 

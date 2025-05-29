@@ -3,7 +3,28 @@ import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import Image from "../../../assets/marca.webp"
 
+import useDataMarcas from "../../../components/hooks/useDataMarcas";
+
+import { useEffect } from "react";
+import { useLocation } from 'react-router';
+
 const AgregarMarcas = () => {
+
+    const location = useLocation();
+    const brand = location.state?.brand
+
+    const {
+        brandName, setBrandName,
+        id, setId,
+        saveBrand, handleUpdate
+    } = useDataMarcas();
+
+    useEffect(() => {
+        if (brand) {
+            setId(brand._id);
+            setBrandName(brand.name);
+        }
+    }, [brand]);
 
     const data = {
         first: "Recuerda ingresar el Nombre de la marca.",
@@ -31,10 +52,21 @@ const AgregarMarcas = () => {
                         <Input
                             label={"Nombre de la marca"}
                             id={"marca"}
-                            type={"text"} />
-                        <Button
-                            text={"Agregar Marca"}
+                            type={"text"}
+                            onChange={(e) => setBrandName(e.target.value)}
+                            value={brandName}
                         />
+                        {!id ? (
+                            <Button
+                                text={"Agregar Marca"}
+                                onClick={saveBrand}
+                            />
+                        ) : (
+                            <Button
+                                text={"Actualizar Marca"}
+                                onClick={handleUpdate}
+                            />
+                        )}
                     </div>
                 </form>
             </div>

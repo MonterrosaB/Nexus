@@ -1,6 +1,4 @@
-import axios from "../../../api/axios";
 import { useEffect, useState } from "react";
-
 
 export const useGetData = () => {
   const [categories, setCategories] = useState([]);
@@ -10,13 +8,24 @@ export const useGetData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const getCategories = await axios.get("/categories");
-        const getBrands = await axios.get("/brands");
-        const getProviders = await axios.get("/providers");
+        // Peticiones paralelas
+        const [catRes, brandRes, provRes] = await Promise.all([
+          fetch("http://localhost:4000/api/categories"),
+          fetch("http://localhost:4000/api/brands"),
+          fetch("http://localhost:4000/api/providers"),
+        ]);
 
-        setCategories(getCategories.data);
-        setBrands(getBrands.data);
-        setProviders(getProviders.data);
+        const [catData, brandData, provData] = await Promise.all([
+          catRes.json(),
+          brandRes.json(),
+          provRes.json(),
+        ]);
+
+        // Formateo para DropDown: { _id, label }
+        setCategories(catData.map(cat => ({ _id: cat._id, label: cat.name })));
+        setBrands(brandData.map(brand => ({ _id: brand._id, label: brand.name })));
+        setProviders(provData.map(provider => ({ _id: provider._id, label: provider.company })));
+
       } catch (error) {
         console.error("Error al obtener datos:", error);
       }

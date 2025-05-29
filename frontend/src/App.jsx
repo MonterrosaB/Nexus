@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
 import Navbar from "./components/Nav";
 import NavAdmin from "./components/NavAdmin";
@@ -32,6 +37,7 @@ import AgregarCategorias from "./pages/admin/AgregarCategorias/AgregarCategorias
 
 import { useEffect } from "react";
 
+
 // Layout que detecta si está en ruta admin
 function Layout({ children }) {
   const location = useLocation();
@@ -53,38 +59,49 @@ function Layout({ children }) {
 
 function App() {
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          {/* Rutas públicas */}
-          <Route path="/" element={<Inicio />} />
-          <Route path="/categorias" element={<Categorias />} />
-          <Route path="/productos" element={<Productos />} />
-          <Route path="/producto/:id" element={<Producto />} />
-          <Route path="/exclusivo-online" element={<ExclusivoOnline />} />
-          <Route path="/terminos&Condiciones" element={<TerminosNCondiciones />} />
-          <Route path="/sobreNosotros" element={<SobreNosotros />} />
-          <Route path="/contactanos" element={<Contactanos />} />
-          <Route path="/listaDeseos" element={<ListaDeseos />} />
-          <Route path="/ordenes" element={<Ordenes />} />
-          <Route path="/carrito-de-compras" element={<CarritoCompras />} />
-          <Route path="/cuenta" element={<Cuenta />} />
+      <Router>
+        <Layout>
+          <Routes>
+            {/* Rutas públicas */}
+            <Route path="/" element={<Inicio />} />
+            <Route path="/categorias" element={<Categorias />} />
+            <Route path="/productos" element={<Productos />} />
+            <Route path="/producto/:id" element={<Producto />} />
+            <Route path="/exclusivo-online" element={<ExclusivoOnline />} />
+            <Route
+              path="/terminos&Condiciones"
+              element={<TerminosNCondiciones />}
+            />
+            <Route path="/sobreNosotros" element={<SobreNosotros />} />
+            <Route path="/contactanos" element={<Contactanos />} />
+            <Route path="/listaDeseos" element={<ListaDeseos />} />
+            <Route path="/ordenes" element={<Ordenes />} />
+            <Route path="/carrito-de-compras" element={<CarritoCompras />} />
+            <Route path="/cuenta" element={<Cuenta />} />
 
-          {/* Rutas admin */}
-          <Route path="/admin/inicio" element={<InicioAdmin />} />
-          <Route path="/admin/agregar-producto" element={<AgregarProductos />} />
-          <Route path="/admin/registrar-datos" element={<RegistrarDatos />} />
-          <Route path="/admin/agregar-usuario" element={<Usuarios />} />
-          <Route path="/admin/tablas" element={<Tablas />} />
-          <Route path="/admin/perfil" element={<Perfil />} />
-          <Route path="/admin/cambiar-cuenta" element={<CambiarCuenta />} />
-          <Route path="/admin/agregar-proveedores" element={<AgregarProveedores />} />
-          <Route path="/admin/agregar-marcas" element={<AgregarMarcas />} />
-          <Route path="/admin/agregar-categorias" element={<AgregarCategorias />} />
-
-        </Routes>
-      </Layout>
-    </Router>
+            {/* Rutas admin */}
+            <Route path="/admin/inicio" element={<InicioAdmin />} />
+            <Route
+              path="/admin/agregar-producto"
+              element={<AgregarProductos />}
+            />
+            <Route path="/admin/registrar-datos" element={<RegistrarDatos />} />
+            <Route path="/admin/agregar-usuario" element={<Usuarios />} />
+            <Route path="/admin/tablas" element={<Tablas />} />
+            <Route path="/admin/perfil" element={<Perfil />} />
+            <Route path="/admin/cambiar-cuenta" element={<CambiarCuenta />} />
+            <Route
+              path="/admin/agregar-proveedores"
+              element={<AgregarProveedores />}
+            />
+            <Route path="/admin/agregar-marcas" element={<AgregarMarcas />} />
+            <Route
+              path="/admin/agregar-categorias"
+              element={<AgregarCategorias />}
+            />
+          </Routes>
+        </Layout>
+      </Router>
   );
 }
 

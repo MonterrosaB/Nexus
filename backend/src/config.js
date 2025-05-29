@@ -9,5 +9,10 @@ export const config = {
     },
     server : {
         PORT : process.env.PORT || 4000
+    },
+    CLOUDINARY:{
+        cloudinary_name: process.env.CLOUDINARY_NAME,
+        cloudinary_api_key: process.env.CLOUDINARY_API_KEY,
+        cloudinary_api_secret: process.env.CLOUDINARY_API_SECRET
     }
 }

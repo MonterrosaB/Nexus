@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 
 // Componente Card local (sin importar desde otro archivo)
@@ -31,13 +30,14 @@ const RegistrarDatos = () => {
       {/* Header */}
       <div className="bg-gradient-to-br from-green-300 via-blue-200 to-white rounded-xl p-6 md:p-12 text-center shadow-md">
         <h1 className="text-2xl md:text-4xl font-bold text-gray-900">
-          MIRA LOS DATOS DE TODAS TUS COLECCIONES
+          ¡YA PUEDES AGREGAR DATOS!
         </h1>
         <p className="mt-4 text-gray-700 text-sm md:text-base">
-          Selecciona una de las secciones y mira, actualiza o elimina datos.
+          Selecciona una de las secciones y agrega tus datos
         </p>
         <p className="text-gray-700 text-sm md:text-base">
-          Si necesitas agregar más datos puedes ir a la sección de registro de datos.
+          Si necesitas ver tus datos ingresados puedes ir a el apartado de
+          tablas de datos
         </p>
         <div className="mt-6">
           <img

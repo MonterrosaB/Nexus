@@ -1,37 +1,67 @@
-import { Pencil, Trash } from "lucide-react"
-const TablasDatos = () => {
+import { useNavigate } from "react-router-dom";
+
+// Componente Card local (sin importar desde otro archivo)
+const Card = ({ children, className = "", onClick }) => (
+  <div
+    onClick={onClick}
+    className={`rounded-xl bg-blue-100 shadow-md hover:shadow-lg transition-transform hover:scale-105 cursor-pointer p-6 text-center ${className}`}
+  >
+    {children}
+  </div>
+);
+
+const CardContent = ({ children }) => (
+  <div className="flex flex-col items-center justify-center">{children}</div>
+);
+
+const collections = [
+  { name: "Categorías", icon: "👥", path: "/admin/categorias" },
+  { name: "Proveedores", icon: "🚚", path: "/admin/proveedores" },
+  { name: "Marcas", icon: "⭐", path: "/admin/marcas" },
+  { name: "Productos", icon: "📦", path: "/admin/producto" },
+  { name: "Usuarios", icon: "👤", path: "/admin/usuarios" },
+];
+
+const TablaDatos = () => {
+  const navigate = useNavigate();
+
   return (
+    <div className="min-h-screen bg-white p-4 md:p-8">
+      {/* Header */}
+      <div className="bg-gradient-to-br from-green-300 via-blue-200 to-white rounded-xl p-6 md:p-12 text-center shadow-md">
+        <h1 className="text-2xl md:text-4xl font-bold text-gray-900">
+          MIRA LOS DATOS DE TODAS TUS COLECCIONES
+        </h1>
+        <p className="mt-4 text-gray-700 text-sm md:text-base">
+          Selecciona una de las secciones y mira, actualiza o elimina datos.
+        </p>
+        <p className="text-gray-700 text-sm md:text-base">
+          Si necesitas agregar más datos puedes ir a la sección de registro de datos.
+        </p>
+        <div className="mt-6">
+          <img
+            src="/assets/avatar-pointing.png"
+            alt="Avatar señalando"
+            className="mx-auto max-h-40 md:max-h-52"
+          />
+        </div>
+      </div>
 
-<div className="p-6 bg-[#F4F7FE] min-h-dvh flex flex-col gap-8">
-    <div class="relative overflow-x-auto sm:rounded-lg p-6">
-  <h2 className="p-4">Lista de Usuarios</h2>
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs uppercase text-black">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    Product name
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Action
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-[#333]">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="flex gap-4 px-6 py-4 text-[#2600FE]">
-                    <Trash/>
-                    <Pencil/>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-</div>
-
-  )
+      {/* Cards */}
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {collections.map((item) => (
+          <Card key={item.name} onClick={() => navigate(item.path)}>
+            <CardContent>
+              <div className="text-4xl md:text-5xl mb-4">{item.icon}</div>
+              <div className="text-lg md:text-xl font-semibold text-blue-900">
+                {item.name}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
 };
 
-export default TablasDatos;
+export default TablaDatos;

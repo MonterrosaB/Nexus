@@ -61,18 +61,6 @@ productsController.createProduct = async (req, res) => {
     imageURL = result.secure_url;
   }
 
-    if (!idCategory || !mongoose.Types.ObjectId.isValid(idCategory)) {
-    return res.status(400).json({ error: "Categoría inválida" });
-  }
-
-  if (!idBrand || !mongoose.Types.ObjectId.isValid(idBrand)) {
-    return res.status(400).json({ error: "Marca inválida" });
-  }
-
-  if (!idProvider || !mongoose.Types.ObjectId.isValid(idProvider)) {
-    return res.status(400).json({ error: "Proveedor inválido" });
-  }
-
   const newProduct = new Products({
     name,
     description,

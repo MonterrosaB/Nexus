@@ -39,7 +39,6 @@ const AgregarProductos = () => {
   } = useProducts();
 
   const { categories, brands, providers } = useGetData();
-  console.log("categorías", categories); // <-- Esto debería mostrar un array de objetos
 
   const data = {
     first:

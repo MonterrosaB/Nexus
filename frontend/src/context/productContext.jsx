@@ -30,11 +30,6 @@ const useProducts = () => {
   const createProducts = async (e) => {
     e.preventDefault();
 
-    console.log("ID categoría:", idcategory); // debe ser algo como "663a3fe72d0454e9d68c1234"
-        console.log("ID brand:", idbrand); // debe ser algo como "663a3fe72d0454e9d68c1234"
-    console.log("ID provider:", idprovider); // debe ser algo como "663a3fe72d0454e9d68c1234"
-
-
     const formData = new FormData();
     formData.append("name", productName);
     formData.append("description", productDescription);

@@ -21,15 +21,17 @@ const Productos = () => {
 
     return (
         <>
-            {/*{ title, columns, rows, deleteRow, updateRow, loading } */}
-            <DataGrid
-                title={"Productos"}
-                columns={columns}
-                rows={products}
-                deleteRow={deleteProduct}
-                updateRow={navigateForm}
-                loading={loading}
-            />
+            <div className="p-6 bg-[#F4F7FE] min-h-dvh flex flex-col gap-8">
+                {/*{ title, columns, rows, deleteRow, updateRow, loading } */}
+                <DataGrid
+                    title={"Productos"}
+                    columns={columns}
+                    rows={products}
+                    deleteRow={deleteProduct}
+                    updateRow={navigateForm}
+                    loading={loading}
+                />
+            </div>
         </>
     )
 }

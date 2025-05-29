@@ -37,6 +37,8 @@ import AgregarCategorias from "./pages/admin/AgregarCategorias/AgregarCategorias
 import Proveedores from "./pages/admin/Colecciones/Proveedores"
 import Usuarios from "./pages/admin/Colecciones/Usuarios"
 import ProductosAdmin from "./pages/admin/Colecciones/Productos"
+import Marcas from "./pages/admin/Colecciones/Marcas"
+import CategoriasAdmin from "./pages/admin/Colecciones/Categorias"
 
 import { useEffect } from "react";
 
@@ -59,7 +61,7 @@ function Layout({ children }) {
       {!isAdminRoute && <Navbar />}
       {isAdminRoute && <NavAdmin />}
 
-      <main className={`min-h-screen ${isAdminRoute ? "ml-64" : ""}`}>
+      <main className={`min-h-screen ${isAdminRoute ? "lg:ml-64" : ""}`}>
         {children}
       </main>
 
@@ -104,6 +106,8 @@ function App() {
           <Route path="/admin/proveedores" element={<Proveedores />} />
           <Route path="/admin/usuarios" element={<Usuarios />} />
           <Route path="/admin/producto" element={<ProductosAdmin />} />
+          <Route path="/admin/marcas" element={<Marcas />} />
+          <Route path="/admin/categorias" element={<CategoriasAdmin />} />
 
 
         </Routes>

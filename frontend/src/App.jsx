@@ -36,6 +36,7 @@ import AgregarMarcas from "./pages/admin/AgregarMarcas/AgregarMarcas";
 import AgregarCategorias from "./pages/admin/AgregarCategorias/AgregarCategorias";
 import Proveedores from "./pages/admin/Colecciones/Proveedores"
 import Usuarios from "./pages/admin/Colecciones/Usuarios"
+import ProductosAdmin from "./pages/admin/Colecciones/Productos"
 
 import { useEffect } from "react";
 
@@ -69,25 +70,25 @@ function Layout({ children }) {
 
 function App() {
   return (
-      <Router>
-        <Layout>
-          <Routes>
-            {/* Rutas públicas */}
-            <Route path="/" element={<Inicio />} />
-            <Route path="/categorias" element={<Categorias />} />
-            <Route path="/productos" element={<Productos />} />
-            <Route path="/producto/:id" element={<Producto />} />
-            <Route path="/exclusivo-online" element={<ExclusivoOnline />} />
-            <Route
-              path="/terminos&Condiciones"
-              element={<TerminosNCondiciones />}
-            />
-            <Route path="/sobreNosotros" element={<SobreNosotros />} />
-            <Route path="/contactanos" element={<Contactanos />} />
-            <Route path="/listaDeseos" element={<ListaDeseos />} />
-            <Route path="/ordenes" element={<Ordenes />} />
-            <Route path="/carrito-de-compras" element={<CarritoCompras />} />
-            <Route path="/cuenta" element={<Cuenta />} />
+    <Router>
+      <Layout>
+        <Routes>
+          {/* Rutas públicas */}
+          <Route path="/" element={<Inicio />} />
+          <Route path="/categorias" element={<Categorias />} />
+          <Route path="/productos" element={<Productos />} />
+          <Route path="/producto/:id" element={<Producto />} />
+          <Route path="/exclusivo-online" element={<ExclusivoOnline />} />
+          <Route
+            path="/terminos&Condiciones"
+            element={<TerminosNCondiciones />}
+          />
+          <Route path="/sobreNosotros" element={<SobreNosotros />} />
+          <Route path="/contactanos" element={<Contactanos />} />
+          <Route path="/listaDeseos" element={<ListaDeseos />} />
+          <Route path="/ordenes" element={<Ordenes />} />
+          <Route path="/carrito-de-compras" element={<CarritoCompras />} />
+          <Route path="/cuenta" element={<Cuenta />} />
 
           {/* Rutas admin */}
           <Route path="/admin/inicio" element={<InicioAdmin />} />
@@ -102,6 +103,8 @@ function App() {
           <Route path="/admin/agregar-categorias" element={<AgregarCategorias />} />
           <Route path="/admin/proveedores" element={<Proveedores />} />
           <Route path="/admin/usuarios" element={<Usuarios />} />
+          <Route path="/admin/producto" element={<ProductosAdmin />} />
+
 
         </Routes>
       </Layout>

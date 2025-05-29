@@ -72,7 +72,6 @@ productsController.createProduct = async (req, res) => {
     unitPrice,
   });
 
-
   newProduct.save();
 
   res.json({ message: "product saved" });
@@ -81,35 +80,46 @@ productsController.createProduct = async (req, res) => {
 productsController.deleteProduct = async (req, res) => {
   await Products.findOneAndDelete(req.params.id);
 };
-
 productsController.updateProduct = async (req, res) => {
-  const {
-    name,
-    description,
-    images,
-    idCategory,
-    idBrand,
-    idProvider,
-    stock,
-    unitPrice,
-  } = req.body;
-
-  await Products.findByIdAndUpdate(
-    req.params.id,
-    {
+  try {
+    const {
       name,
       description,
-      images,
       idCategory,
       idBrand,
       idProvider,
       stock,
       unitPrice,
-    },
-    { new: true }
-  );
+    } = req.body;
 
-  res.json({ message: "product updated " });
+    const updateFields = {
+      name,
+      description,
+      idCategory,
+      idBrand,
+      idProvider,
+      stock,
+      unitPrice,
+    };
+
+    // Solo actualiza la imagen si viene un archivo nuevo
+    if (req.file) {
+      updateFields.images = `/public/${req.file.filename}`; // o como guardes la ruta
+    }
+
+    const updated = await Products.findByIdAndUpdate(
+      req.params.id,
+      updateFields,
+      {
+        new: true,
+      }
+    );
+
+    res.json({ message: "Producto actualizado", product: updated });
+  } catch (error) {
+    console.error("Error al actualizar el producto:", error);
+    res.status(500).json({ message: "Error del servidor" });
+  }
 };
 
 export default productsController;

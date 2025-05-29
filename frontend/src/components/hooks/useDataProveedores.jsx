@@ -1,14 +1,6 @@
-/*
-    firstName,
-    lastName,
-    company,
-    email,
-    phoneNumber
-*/
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-
+import Swal from "sweetalert2";
 
 const useDataProveedores = () => {
     const navigate = useNavigate();
@@ -17,7 +9,7 @@ const useDataProveedores = () => {
     const [providerName, setProviderName] = useState("");
     const [providerLastName, setProviderLastName] = useState("");
     const [providerCompany, setProviderCompany] = useState("");
-    const [providerEmail, setproviderEmail] = useState("");
+    const [providerEmail, setProviderEmail] = useState("");
     const [providerPhoneNumber, setProviderPhoneNumber] = useState("");
     const [id, setId] = useState("");
 
@@ -25,123 +17,142 @@ const useDataProveedores = () => {
         setProviderName("");
         setProviderLastName("");
         setProviderCompany("");
-        setproviderEmail("");
+        setProviderEmail("");
         setProviderPhoneNumber("");
-        setId("")
+        setId("");
     };
 
     const fetchProviders = async () => {
-        const response = await fetch("http://localhost:4000/api/providers");
+        try {
+            setLoading(true);
+            const response = await fetch("http://localhost:4000/api/providers");
+            if (!response.ok) throw new Error("Error al obtener los proveedores");
 
-        if (!response.ok) {
-            throw new Error("Hubo un error al obtener los proveedores");
+            const data = await response.json();
+            setProviders(data);
+        } catch (error) {
+            console.error(error);
+            Swal.fire("Error", error.message, "error");
+        } finally {
+            setLoading(false);
         }
+    };
 
-        const data = await response.json();
-        setProviders(data);
-        setLoading(false);
+    useEffect(() => {
+        fetchProviders();
+    }, []);
+
+    const validateFields = () => {
+        if (
+            !providerName.trim() ||
+            !providerLastName.trim() ||
+            !providerCompany.trim() ||
+            !providerEmail.trim() ||
+            !providerPhoneNumber.trim()
+        ) {
+            Swal.fire("Campos incompletos", "Por favor, completa todos los campos.", "warning");
+            return false;
+        }
+        return true;
     };
 
     const saveProvider = async (e) => {
         e.preventDefault();
+        if (!validateFields()) return;
 
         const newProvider = {
             firstName: providerName,
             lastName: providerLastName,
             company: providerCompany,
             email: providerEmail,
-            phoneNumber: providerPhoneNumber
+            phoneNumber: providerPhoneNumber,
         };
 
-        const response = await fetch("http://localhost:4000/api/providers", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newProvider),
-        });
+        try {
+            const response = await fetch("http://localhost:4000/api/providers", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(newProvider),
+            });
 
-        if (!response.ok) {
-            throw new Error("Hubo un error al registrar el proveedor");
+            if (!response.ok) throw new Error("Error al registrar el proveedor");
+
+            const data = await response.json();
+            console.log(data);
+
+            Swal.fire("Éxito", "Proveedor registrado correctamente", "success");
+            fetchProviders();
+            cleanData();
+        } catch (error) {
+            console.error("Error al guardar proveedor:", error);
+            Swal.fire("Error", error.message, "error");
         }
-
-        const data = await response.json();
-        console.log(data);
-
-        alert("Provedor registrada correctamente");
-        fetchProviders();
-        cleanData();
-
     };
 
-    // useEffect
-    useEffect(() => {
-        fetchProviders();
-    }, []);
-
     const deleteProvider = async (id) => {
-        try {
-            const response = await fetch(
-                `http://localhost:4000/api/providers/${id}`,
-                {
-                    method: "DELETE",
-                    body: JSON.stringify(deleteProvider),
-                }
-            );
+        const confirm = await Swal.fire({
+            title: "¿Estás seguro?",
+            text: "Esta acción no se puede deshacer.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar",
+        });
 
-            if (!response.ok) {
-                throw new Error("Error al eliminar el proveedor");
-            }
+        if (!confirm.isConfirmed) return;
+
+        try {
+            const response = await fetch(`http://localhost:4000/api/providers/${id}`, {
+                method: "DELETE",
+            });
+
+            if (!response.ok) throw new Error("Error al eliminar el proveedor");
 
             const result = await response.json();
             console.log("Deleted:", result);
-            console.log(id);
 
-            // Actualizar la lista después de borrar
+            Swal.fire("Eliminado", "Proveedor eliminado correctamente", "success");
             fetchProviders();
         } catch (error) {
-            console.error("Error deleting employee sfs:", error);
+            console.error("Error al eliminar proveedor:", error);
+            Swal.fire("Error", error.message, "error");
+        }
+    };
+
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+        if (!validateFields()) return;
+
+        const updatedProvider = {
+            firstName: providerName,
+            lastName: providerLastName,
+            company: providerCompany,
+            email: providerEmail,
+            phoneNumber: providerPhoneNumber,
+        };
+
+        try {
+            const response = await fetch(`http://localhost:4000/api/providers/${id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(updatedProvider),
+            });
+
+            if (!response.ok) throw new Error("Error al actualizar el proveedor");
+
+            Swal.fire("Actualizado", "Proveedor actualizado correctamente", "success");
+            cleanData();
+            fetchProviders();
+        } catch (error) {
+            console.error("Error al actualizar proveedor:", error);
+            Swal.fire("Error", error.message, "error");
+        } finally {
+            setLoading(false);
         }
     };
 
     const navigateForm = (provider) => {
         navigate("/admin/agregar-proveedores", { state: { provider } });
-    };
-
-    const handleUpdate = async (e) => {
-        e.preventDefault();
-
-        try {
-            const updatedProvider = {
-                firstName: providerName,
-                lastName: providerLastName,
-                company: providerCompany,
-                email: providerEmail,
-                phoneNumber: providerPhoneNumber
-            };
-
-            const response = await fetch(
-                `http://localhost:4000/api/providers/${id}`,
-                {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(updatedProvider),
-                }
-            );
-
-            if (!response.ok) {
-                throw new Error("Error al actualizar el proveedor" + Error);
-            }
-            cleanData();
-            fetchProviders(); // Volver a cargar la lista
-        } catch (error) {
-            alert("Error al actualizar el proveedor");
-            console.error(error);
-        } finally {
-            setLoading(false);
-        }
     };
 
     return {
@@ -156,7 +167,7 @@ const useDataProveedores = () => {
         providerCompany,
         setProviderCompany,
         providerEmail,
-        setproviderEmail,
+        setProviderEmail,
         providerPhoneNumber,
         setProviderPhoneNumber,
         id,
@@ -164,7 +175,8 @@ const useDataProveedores = () => {
         saveProvider,
         deleteProvider,
         navigateForm,
-        handleUpdate
+        handleUpdate,
     };
-}
+};
+
 export default useDataProveedores;

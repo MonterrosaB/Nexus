@@ -21,7 +21,7 @@ const AgregarProveedores = () => {
         providerCompany,
         setProviderCompany,
         providerEmail,
-        setproviderEmail,
+        setProviderEmail,
         providerPhoneNumber,
         setProviderPhoneNumber,
         id,
@@ -36,7 +36,7 @@ const AgregarProveedores = () => {
             setProviderName(provider.firstName);
             setProviderLastName(provider.lastName);
             setProviderCompany(provider.company);
-            setproviderEmail(provider.email);
+            setProviderEmail(provider.email);
             setProviderPhoneNumber(provider.phoneNumber);
         }
     }, [provider]);
@@ -89,7 +89,7 @@ const AgregarProveedores = () => {
                             label={"Correo Electronico"}
                             id={"email"}
                             type={"email"}
-                            onChange={(e) => setproviderEmail(e.target.value)}
+                            onChange={(e) => setProviderEmail(e.target.value)}
                             value={providerEmail} />
                         <Input
                             label={"Número de teléfono"}

@@ -26,10 +26,10 @@ app.use(cookieParser())
 
 app.use("/api",authroutes)
 
-app.use("/api/products",authRequired, productRoutes);
+app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
-app.use("/api/categories",authRequired, categoryRoutes);
-app.use("/api/providers",authRequired,providerRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/providers",providerRoutes);
 app.use("/api/users",authRequired, userRoutes);
 app.use("/api/brands",authRequired, brandRoutes); 
 app.use("/api/cartProducts", cartProductsRoutes);

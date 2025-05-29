@@ -69,14 +69,15 @@ const useDataUsuarios = () => {
       return;
     }
 
-    if (!/^\d{9}-\d$/.test(dui)) {
-      Swal.fire({
-        title: "DUI inválido",
-        text: "El DUI debe tener el formato correcto (ej: 12345678-9).",
-        icon: "error"
-      });
-      return;
-    }
+    if (!/^\d{8}-\d$/.test(dui)) {
+  Swal.fire({
+    title: "DUI inválido",
+    text: "El DUI debe tener el formato correcto (ej: 12345678-9).",
+    icon: "error"
+  });
+  return;
+}
+
 
     if (!/\S+@\S+\.\S+/.test(userEmail)) {
       Swal.fire({

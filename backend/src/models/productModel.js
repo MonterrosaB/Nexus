@@ -30,13 +30,9 @@ const productsSchema = new Schema (
          },
 
          images:{
-            type: [String], // Array de strings para múltiples imágenes
-            validate: {
-                validator: function (arr) {
-                    return arr.every(url => /^https?:\/\/.+\.(jpg|jpeg|png|gif|webp)$/.test(url));
-                },
-                message: "Cada imagen debe ser una URL válida de imagen."
-            }
+            type: String,
+            require: true
+
         },
 
          idCategory:{

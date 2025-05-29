@@ -14,7 +14,9 @@ const app = express();
 
 app.use(cors());
 
-app.use(express.json());
+app.use(express.json({            
+    origin: "http://localhost:5173"
+}));
 
 app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);

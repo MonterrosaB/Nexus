@@ -1,4 +1,6 @@
 import express from "express"
+import cors from 'cors';
+
 
 import {login, register, logout, profile} from '../controllers/authController.js'
 import {authRequired} from "../middelwares/validateToken.js"

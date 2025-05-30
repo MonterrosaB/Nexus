@@ -66,13 +66,6 @@ function Login() {
         >
           Continuar
         </button>
-
-         <p className="text-sm text-gray-700">
-    ¿No tienes una cuenta?{" "}
-    <Link to="/register" className="text-blue-600 hover:underline">
-      Registrarse
-    </Link>
-  </p>
       </form>
 
        

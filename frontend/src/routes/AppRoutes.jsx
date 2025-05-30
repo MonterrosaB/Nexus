@@ -23,7 +23,7 @@ import LoginAdmin from "../pages/public/login";
 
 // páginas admin
 import InicioAdmin from "../pages/admin/AdminInicio";
-import AgregarProductos from "../pages/admin/AgregarProductos/AgregarProductos";
+import AgregarProductos from "../pages/admin/Agregar/AgregarProductos";
 import RegistrarDatos from "../pages/admin/RegistrarDatos";
 import AgregarUsuarios from "../pages/admin/Agregar/AgregarUsuarios";
 import Tablas from "../pages/admin/TablasDatos";

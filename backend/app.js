@@ -10,28 +10,29 @@ import brandRoutes from "./src/routes/brand.js";
 import cartProductsRoutes from "./src/routes/cartProduct.js";
 import customerRoutes from "./src/routes/customer.js";
 
-import authroutes from "./src/routes/auth.routes.js"
+import authroutes from "./src/routes/auth.routes.js";
 import cookieParser from "cookie-parser";
-import {authRequired} from "./src/middelwares/validateToken.js"
-
+import { authRequired } from "./src/middelwares/validateToken.js";
 
 const app = express();
 
-app.use(cors({            
-    origin: "http://localhost:5173"
-}));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 
 app.use(express.json());
-app.use(cookieParser())
+app.use(cookieParser());
 
-app.use("/api",authroutes)
+app.use("/api", authroutes);
 
 app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/categories", categoryRoutes);
-app.use("/api/providers",providerRoutes);
-app.use("/api/users",authRequired, userRoutes);
-app.use("/api/brands",authRequired, brandRoutes); 
+app.use("/api/providers", providerRoutes);
+app.use("/api/users", authRequired, userRoutes);
+app.use("/api/brands", authRequired, brandRoutes);
 app.use("/api/cartProducts", cartProductsRoutes);
 app.use("/api/customers", customerRoutes);
 

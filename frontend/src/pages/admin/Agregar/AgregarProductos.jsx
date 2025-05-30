@@ -27,7 +27,7 @@ const AgregarProductos = () => {
     productStock, setProductStock,
     productUnitPrice, setProductUnitPrice,
     id, setId,
-    saveProduct, deleteProduct,
+    saveProduct,
     handleUpdate, onImageChange
   } = useDataProductos();
 

@@ -10,8 +10,8 @@ const Login = () => {
 
 
   return (
-<div className="min-h-screen flex items-center justify-center p-10 md:pt-20 lg:pt-10">
-   <div className="bg-white rounded-3xl overflow-hidden shadow-lg w-full max-w-5xl  grid grid-cols-1 md:grid-cols-2 space-y-8">
+    <div className="min-h-screen flex items-center justify-center p-10 md:pt-20 lg:pt-10">
+      <div className="bg-white rounded-3xl overflow-hidden shadow-lg w-full max-w-5xl  grid grid-cols-1 md:grid-cols-2 space-y-8">
         {/* Izquierda: Formulario */}
         <div className="pt-32 md:pt-50 lg:pt-40 px-20">
           <h2 className="text-2xl font-bold mb-10 text-center ">Iniciar sesión</h2>
@@ -37,7 +37,7 @@ const Login = () => {
                 {mostrar ? <Eye /> : <EyeOff />}
               </div>
             </div>
-            
+
             <div className="col-span-full w-full flex justify-center mt-9">
               <button className="bg-black text-white px-6 py-2 rounded hover:bg-gray-800 transition">
                 Continuar
@@ -48,7 +48,7 @@ const Login = () => {
         </div>
 
         {/* Derecha: Bienvenida */}
-        <div className="relative w-full h-full relative w-full min-h-screen rounded-tl-3xl rounded-bl-none rounded-br-3xl md:rounded-bl-3xl md:rounded-br-none overflow-hidden">
+        <div className="relative w-full h-full min-h-screen rounded-tl-3xl rounded-bl-none rounded-br-3xl md:rounded-bl-3xl md:rounded-br-none overflow-hidden">
           {/* Imagen de fondo */}
           <img
             src={fondo}

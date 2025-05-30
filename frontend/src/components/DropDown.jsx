@@ -9,7 +9,7 @@ const DropDown = ({ id, label, options, onChange, value }) => {
                     className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#8d8c8c] bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     value={value}
                 >
-                    <option value="" disabled hidden>Selecciona Algo</option>
+                    <option value="" disabled hidden>Selecciona alguna opción</option>
                     {options.map((opt) => (
                         <option
                             key={opt._id}

@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import Nexus from "../assets/Nexus.svg"
 
 const links = [
-  { to: "/admin/inicio", label: "Inicio" },
+  { to: "/admin", label: "Inicio" },
   { to: "/admin/registrar-datos", label: "Registrar Datos" },
   { to: "/admin/agregar-producto", label: "Agregar Productos" },
   { to: "/admin/agregar-usuario", label: "Agregar Usuarios" },
@@ -18,7 +18,7 @@ const NavAdmin = () => {
   return (
     <aside className="w-64 min-h-screen bg-white hidden lg:flex flex-col fixed z-10 shadow-md text-[#2B3674]">
       <div className="flex items-center justify-center p-6 gap-2 shadow-sm">
-        <img src={Nexus} alt="Logotipo Nexus" className="w-min"/>
+        <img src={Nexus} alt="Logotipo Nexus" className="w-min" />
         <span className="text-2xl font-semibold">Nexus</span>
       </div>
 
@@ -28,11 +28,10 @@ const NavAdmin = () => {
             <li key={i}>
               <Link
                 to={link.to}
-                className={`flex items-center gap-4 px-4 py-2 rounded-lg transition-all ${
-                  pathname === link.to
-                    ? "bg-blue-100 text-blue-600 font-semibold"
-                    : "hover:bg-gray-100"
-                }`}
+                className={`flex items-center gap-4 px-4 py-2 rounded-lg transition-all ${pathname === link.to
+                  ? "bg-blue-100 text-blue-600 font-semibold"
+                  : "hover:bg-gray-100"
+                  }`}
               >
                 {link.label}
               </Link>

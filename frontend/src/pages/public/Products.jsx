@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import CardProduct from "../components/CardProducts";
+import CardProduct from "../../components/CardProducts";
 
 const Productos = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Productos = () => {
     fetchProductos();
   }, []);
 
-    const handleClick = (producto) => {
+  const handleClick = (producto) => {
     navigate(`/producto/${producto._id}`, { state: { producto } });
   };
 

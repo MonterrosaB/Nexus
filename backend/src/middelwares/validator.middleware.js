@@ -3,7 +3,10 @@ export const validateSchema = (schema) => (req, res, next) => {
     schema.parse(req.body);
     next();
   } catch (error) {
-    console.log(error.errors)
-    .json(error.errors.map(error => error.message));
+    console.error("Error de validación:", error.errors);
+    return res.status(400).json({
+      message: "Validation error",
+      errors: error.errors.map(err => err.message),
+    });
   }
 };

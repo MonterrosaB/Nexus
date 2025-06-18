@@ -24,4 +24,4 @@ const userSchema = new Schema(
   }
 );
 
-export default model("UsersNexus", userSchema);
+export default model("Admin", userSchema);

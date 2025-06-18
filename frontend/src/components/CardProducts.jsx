@@ -1,4 +1,13 @@
-const CardProduct = ({ productos, handleClick }) => {
+import { useNavigate } from "react-router";
+const CardProduct = ({ productos }) => {
+
+  const navigate = useNavigate();
+
+
+  const handleClick = (producto) => {
+    navigate(`/producto/${producto._id}`, { state: { producto } });
+  };
+
   return (
     <>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -15,13 +24,10 @@ const CardProduct = ({ productos, handleClick }) => {
             />
             <h3 className="font-semibold text-lg">{prod.name}</h3>
             <p className="text-sm text-gray-600">
-              {(prod.idCategory?.name || prod.idBrand?.name)
-                ? `${prod.idCategory?.name || ""} - ${prod.idBrand?.name || ""}`
-                : "-"}
+              {`${prod.idCategory?.name || ""} - ${prod.idBrand?.name || ""}`}
             </p>            <p className="text-sm text-gray-500">{prod.stock}</p>
             <p className="font-bold text-indigo-600">${prod.unitPrice}</p>
           </div>
-
         ))}
       </div>
     </>

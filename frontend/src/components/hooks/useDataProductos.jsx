@@ -165,6 +165,11 @@ const useDataProductos = () => {
         navigate("/admin/agregar-producto", { state: { product } });
     };
 
+    const handleClick = (producto) => {
+        navigate(`/producto/${producto._id}`, { state: { producto } });
+    };
+
+
     const handleUpdate = async (e) => {
         e.preventDefault();
 

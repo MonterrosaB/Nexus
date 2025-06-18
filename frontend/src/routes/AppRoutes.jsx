@@ -10,7 +10,7 @@ import PrivateRoute from "../components/PrivateRoutes";
 import Inicio from "../pages/public/inicio";
 import Categorias from "../pages/public/categorias";
 import Productos from "../pages/public/Products";
-import Producto from "../pages/public/producto";
+import Producto from "../pages/public/Product";
 import ExclusivoOnline from "../pages/public/exclusivoOnline";
 import TerminosNCondiciones from "../pages/public/terminosYCondiciones";
 import SobreNosotros from "../pages/public/sobreNosotros";

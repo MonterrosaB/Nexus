@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../context/authContext";
+import { useAuth } from "../../context/authContextAdmin";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -10,15 +10,15 @@ function Login() {
     formState: { errors },
   } = useForm();
 
-  const {signin, isAuthenticated,user, errors: signinErrors} = useAuth()
+  const { signin, isAuthenticated, user, errors: signinErrors } = useAuth()
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
-  if (isAuthenticated && user) {
-    navigate("/admin/inicio");
-  }
-}, [isAuthenticated, user]);
+    if (isAuthenticated && user) {
+      navigate("/admin/inicio");
+    }
+  }, [isAuthenticated, user]);
 
   const onSubmit = handleSubmit((data) => {
     signin(data);
@@ -26,8 +26,8 @@ function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        {Array.isArray(signinErrors) &&
-  signinErrors.map((err, i) => <p key={i}>{err}</p>)}
+      {Array.isArray(signinErrors) &&
+        signinErrors.map((err, i) => <p key={i}>{err}</p>)}
       <form
         onSubmit={onSubmit}
         className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md space-y-6"
@@ -68,7 +68,7 @@ function Login() {
         </button>
       </form>
 
-       
+
     </div>
   );
 }

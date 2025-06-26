@@ -8,7 +8,7 @@ export default function CustomerLayout() {
         <div>
             {/* NavbarCliente, FooterCliente, etc */}
             <Nav />
-            <main className="min-h-dvw">
+            <main className="min-h-dvh">
                 <Outlet />
             </main>
             <Footer />

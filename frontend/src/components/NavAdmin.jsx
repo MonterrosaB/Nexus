@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Nexus from "../assets/Nexus.svg"
 import { logoutRequest } from "../api/auth"; // debes tener esta función
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../context/authContextAdmin";
 
 const links = [
   { to: "/admin", label: "Inicio" },
@@ -15,18 +15,7 @@ const links = [
 ];
 
 const NavAdmin = () => {
-    const { setUser, setIsAuthenticated } = useAuth();
-
-    const handleLogout = async () => {
-  try {
-    await logoutRequest(); // elimina la cookie desde el backend
-    // limpiar estado de sesión en el frontend (si usas contexto)
-    setUser(null);
-    setIsAuthenticated(false);
-  } catch (error) {
-    console.error("Error al cerrar sesión", error);
-  }
-};
+  const { logout } = useAuth();
 
   const { pathname } = useLocation();
 
@@ -53,25 +42,25 @@ const NavAdmin = () => {
             </li>
           ))}
           <button
-      onClick={handleLogout} // Asegúrate de definir esta función
-      className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 transition-all font-semibold"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-5 w-5"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1m0-10V5" />
-      </svg>
-      Cerrar sesión
-    </button>
+            onClick={logout} // Asegúrate de definir esta función
+            className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 transition-all font-semibold"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1m0-10V5" />
+            </svg>
+            Cerrar sesión
+          </button>
         </ul>
       </nav>
 
-  
+
     </aside>
   );
 };

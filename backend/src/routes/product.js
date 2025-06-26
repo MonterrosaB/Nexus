@@ -1,6 +1,7 @@
 import express from "express";
 import productsController from "../controllers/productController.js";
 import multer from "multer";
+import { authRequired } from "../middelwares/validateToken.js"; // Asegúrate de tenerlo exportado correctamente
 
 const router = express.Router();
 

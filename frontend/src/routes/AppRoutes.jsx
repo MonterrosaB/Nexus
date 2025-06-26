@@ -1,6 +1,6 @@
 // src/routes/AppRoutes.jsx
 import { Routes, Route, Navigate } from "react-router";
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../context/authContextAdmin";
 
 import CustomerLayout from "../components/CustomerLayout";
 import AdminLayout from "../components/AdminLayout";
@@ -10,7 +10,7 @@ import PrivateRoute from "../components/PrivateRoutes";
 import Inicio from "../pages/public/inicio";
 import Categorias from "../pages/public/categorias";
 import Productos from "../pages/public/Products";
-import Producto from "../pages/public/Product";
+import Producto from "../pages/public/ProductDetail";
 import ExclusivoOnline from "../pages/public/exclusivoOnline";
 import TerminosNCondiciones from "../pages/public/terminosYCondiciones";
 import SobreNosotros from "../pages/public/sobreNosotros";
@@ -19,7 +19,7 @@ import ListaDeseos from "../pages/public/listaDeseos";
 import Ordenes from "../pages/public/ordenes";
 import CarritoCompras from "../pages/public/carritoCompras";
 import Cuenta from "../pages/public/cuenta";
-import LoginAdmin from "../pages/public/login";
+import LoginAdmin from "../pages/admin/login";
 
 // páginas admin
 import InicioAdmin from "../pages/admin/AdminInicio";

@@ -12,47 +12,32 @@ import {
 import NexusLogo from "../assets/Nexus.svg";
 import { Link } from "react-router";
 
+import { useAuthCustomer } from "../context/authContextPublic"; // <-- Asegúrate que esta ruta es correcta
+
 const Nav = () => {
   const [openDropdown, setOpenDropDown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const { isAuthenticated, user } = useAuthCustomer(); // <-- ⚠️ Lo importante
+
   return (
     <header className="w-full text-sm">
-      {/* TOP BAR */}
-      <div className="text-black py-2 px-4 flex flex-col md:flex-row items-center justify-between gap-3 shadow-md">
-        <div className="flex items-center gap-2">
-          <span className="bg-red-600 rounded-full px-8 py-1 text-white">HOT</span>
-          <span>Envío express GRATIS en pedidos de $99 o más</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <button className="bg-indigo-300 text-black font-bold px-4 py-1 rounded-full">
-            ¿Necesitas ayuda?
-          </button>
-          <div className="flex items-center gap-2 border border-blue-800 rounded-full px-4 py-1 box-border">
-            <Phone className="w-4 h-4 text-blue-800" />
-            <span>+503 7579 6598</span>
-            <button className="bg-blue-800 text-white px-3 py-0.5 rounded-full">
-              Llámanos
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* LOGO + SEARCH + ICONS */}
       <div className="flex flex-wrap items-center justify-between gap-4 px-4 py-4">
         {/* Logo */}
         <Link to={"/"}>
           <img src={NexusLogo} className="h-10" alt="Logo" />
+          Nexus
         </Link>
 
-{/* Search */}
-<div className="flex-1 min-w-[180px]">
-  <input
-    type="search"
-    placeholder="Buscar Productos"
-    className="w-full px-4 py-2 border rounded-full shadow-sm focus:outline-none"
-  />
-</div>
+        {/* Search */}
+        <div className="flex-1 min-w-[180px]">
+          <input
+            type="search"
+            placeholder="Buscar Productos"
+            className="w-full px-4 py-2 border rounded-full shadow-sm focus:outline-none"
+          />
+        </div>
 
         {/* Burger Menu Icon */}
         <button
@@ -70,11 +55,13 @@ const Nav = () => {
           </li>
           <li className="flex items-center gap-1">
             <Package className="w-5 h-5" />
-            <Link to={"/ordenes"}>Seguimiento de pedido</Link>
+            <Link to={"/ordenes"}>Mis Pedidos</Link>
           </li>
           <li className="flex items-center gap-1">
             <User className="w-5 h-5" />
-            <Link to={"/cuenta"}>Cuenta</Link>
+            <Link to={"/cuenta"}>
+              {isAuthenticated ? "Mi cuenta" : "Cuenta"}
+            </Link>
           </li>
           <li>
             <Link to={"/carrito-de-compras"}>
@@ -91,9 +78,6 @@ const Nav = () => {
             <Link to={"/categorias"}>Categorias</Link>
           </li>
           <li>
-            <Link to={"/exclusivo-online"}>Exclusivo Online</Link>
-          </li>
-          <li>
             <Link to={"terminos&Condiciones"}>Condiciones de ofertas</Link>
           </li>
           <li>
@@ -108,15 +92,15 @@ const Nav = () => {
             <ul className="flex flex-col md:hidden gap-2 mt-4 border-t pt-4 w-full">
               <li className="flex items-center gap-2">
                 <Heart className="w-5 h-5" />
-                <Link to={"/"}>Lista de Deseos</Link>
+                <Link to={"/listaDeseos"}>Lista de Deseos</Link>
               </li>
               <li className="flex items-center gap-2">
                 <Package className="w-5 h-5" />
-                <Link to={""}>Seguimiento de pedido</Link>
+                <Link to={"/ordenes"}>Mis pedido</Link>
               </li>
               <li className="flex items-center gap-2">
                 <User className="w-5 h-5" />
-                <Link to={""}>Cuenta</Link>
+                <Link to={"/cuenta"}>Cuenta</Link>
               </li>
               <li className="flex items-center gap-2">
                 <ShoppingBag className="w-5 h-5" />
